@@ -14,6 +14,26 @@ const resolvers = {
       return User.findOne({ _id: userId });
     },
 
+    // Query for all videos
+    videos: async () => {
+      return Video.find();
+    },
+
+    // Query for one video
+    video: async (parent, { videoId }) => {
+      return Video.findOne({ _id: videoId });
+    },
+
+    // Query for all genres
+    genres: async () => {
+      return Genre.find();
+    },
+
+    // Query for one genre
+    genre: async (parent, { genreId }) => {
+      return Genre.findOne({ _id: genreId });
+    },
+
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
