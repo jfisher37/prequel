@@ -1,13 +1,13 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import ProfileList from '../components/ProfileList';
+import VideoList from '../components/VideoList';
 
-import { QUERY_PROFILES } from '../utils/queries';
+import { QUERY_VIDEOS } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_PROFILES);
-  const profiles = data?.profiles || [];
+  const { loading, data } = useQuery(QUERY_VIDEOS);
+  const videos = data?.videos || [];
 
   return (
     <main>
@@ -16,9 +16,9 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ProfileList
-              profiles={profiles}
-              title="Here's the current roster of friends..."
+            <VideoList
+              videos={videos}
+              title="HEADER TEXT"
             />
           )}
         </div>
