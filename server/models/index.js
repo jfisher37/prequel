@@ -1,3 +1,5 @@
-const Profile = require('./Profile');
+const User = require("./User");
+const Video = require("./Video");
+const Genre = require("./Genre");
 
-module.exports = { Profile };
+module.exports = { User, Video, Genre };
