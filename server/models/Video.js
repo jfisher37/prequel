@@ -1,2 +1,38 @@
-const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
+const { Schema } = require("mongoose");
+
+const videoSchema = new Schema({
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  likes: {
+    type: Number,
+  },
+  dislikes: {
+    type: Number,
+  },
+  views: {
+    type: Number,
+  },
+  publishDate: {
+    type: Date,
+    default: Date.now(),
+  },
+  users: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  genres: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Genre",
+    },
+  ],
+});
+
+const Video = mongoose.model("Video", videoSchema);
+
+module.exports = Video;
