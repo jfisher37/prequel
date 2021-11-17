@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import CloudinaryUploadWidget from "../components/CloudinaryUploadWidget";
+import CloudinaryUploadWidget from "../components/Upload";
 
 // import VideoList from '../components/VideoList';
 import {
@@ -22,8 +22,6 @@ const Home = () => {
       <p>Hi</p>
       <div className="flex-row justify-center">
         <div className="col-12 col-md-10 my-3">
-          <CloudinaryUploadWidget />
-
           {loading ? (
             <div>Loading...</div>
           ) : (
