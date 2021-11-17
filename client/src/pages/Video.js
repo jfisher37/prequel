@@ -1,12 +1,13 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import Video from '../components/VideoList';
+// import Video from '../components/VideoList';
+import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 
-import { QUERY_PROFILES } from '../utils/queries';
+import { QUERY_VIDEOS } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_VIDEO);
+  const { loading, data } = useQuery(QUERY_VIDEOS);
   const video = data?.video || [];
 
   return (
