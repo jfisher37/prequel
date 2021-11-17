@@ -5,14 +5,14 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     // Query for all users
-    users: async () => {
-      return User.find();
-    },
+    // users: async () => {
+    //   return User.find();
+    // },
 
-    // Query for one user
-    user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId });
-    },
+    // // Query for one user
+    // user: async (parent, { userId }) => {
+    //   return User.findOne({ _id: userId });
+    // },
 
     // Query for all videos
     videos: async () => {
@@ -24,59 +24,59 @@ const resolvers = {
       return Video.findOne({ _id: videoId });
     },
 
-    // Query for all genres
-    genres: async () => {
-      return Genre.find();
-    },
+    // // Query for all genres
+    // genres: async () => {
+    //   return Genre.find();
+    // },
 
-    // Query for one genre
-    genre: async (parent, { genreId }) => {
-      return Genre.findOne({ _id: genreId });
-    },
+    // // Query for one genre
+    // genre: async (parent, { genreId }) => {
+    //   return Genre.findOne({ _id: genreId });
+    // },
 
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-    me: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id });
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
+    // me: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findOne({ _id: context.user._id });
+    //   }
+    //   throw new AuthenticationError("You need to be logged in!");
+    // },
   },
 
-  Mutation: {
+  // Mutation: {
     // Mutation to add a user
-    addUser: async (parent, { name, email, password }) => {
-      const user = await User.create({ name, email, password });
-      const token = signToken(user);
+    // addUser: async (parent, { name, email, password }) => {
+    //   const user = await User.create({ name, email, password });
+    //   const token = signToken(user);
 
-      return { token, profile };
-    },
+    //   return { token, profile };
+    // },
 
     // Mutation to login
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    // login: async (parent, { email, password }) => {
+    //   const user = await User.findOne({ email });
 
-      if (!user) {
-        throw new AuthenticationError("No profile with this email found!");
-      }
+    //   if (!user) {
+    //     throw new AuthenticationError("No profile with this email found!");
+    //   }
 
-      const correctPw = await User.isCorrectPassword(password);
+    //   const correctPw = await User.isCorrectPassword(password);
 
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect password!");
-      }
+    //   if (!correctPw) {
+    //     throw new AuthenticationError("Incorrect password!");
+    //   }
 
-      const token = signToken(user);
-      return { token, profile };
-    },
+    //   const token = signToken(user);
+    //   return { token, profile };
+    // },
 
     // Mutation for user to remove their own profile
-    removeProfile: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOneAndDelete({ _id: context.user._id });
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
+    // removeProfile: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findOneAndDelete({ _id: context.user._id });
+    //   }
+    //   throw new AuthenticationError("You need to be logged in!");
+    // },
 
     // Add a third argument to the resolver to access data in our `context`
     // addSkill: async (parent, { profileId, skill }, context) => {
@@ -108,7 +108,7 @@ const resolvers = {
     //   }
     //   throw new AuthenticationError("You need to be logged in!");
     // },
-  },
+  // },
 };
 
 module.exports = resolvers;
