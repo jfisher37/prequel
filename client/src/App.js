@@ -54,7 +54,7 @@ function App() {
               <Signup />
             </Route>
             <Route exact path="/video/:videoId">
-              <Video />
+              {/* <Video /> */}
             </Route>
           </div>
           <Footer />
