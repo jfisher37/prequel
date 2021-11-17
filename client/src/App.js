@@ -15,6 +15,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CloudinaryUploadWidget from "./components/Upload";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -53,9 +54,12 @@ function App() {
             <Route exact path="/signup">
               <Signup />
             </Route>
-            <Route exact path="/video/:videoId">
-              {/* <Video /> */}
+            <Route exact path="/upload">
+              <CloudinaryUploadWidget />
             </Route>
+            {/* <Route exact path="/video/:videoId">
+              <Video />
+            </Route> */}
           </div>
           <Footer />
         </div>
