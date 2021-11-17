@@ -9,10 +9,6 @@ export const QUERY_VIDEOS = gql`
     }
   }
 `
-
-
-
-
 export const QUERY_PROFILES = gql`
   query allProfiles {
     profiles {
