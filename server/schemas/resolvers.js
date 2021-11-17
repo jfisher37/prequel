@@ -43,32 +43,37 @@ const resolvers = {
     },
   },
 
-  // Mutation: {
-    // Mutation to add a user
-    // addVideo: async (parent, { name, email, password }) => {
-    //   const user = await User.create({ name, email, password });
-    //   const token = signToken(user);
+  Mutation: {
+    // Mutation to add a video
+    addVideo: async (parent, { title, cloudURL }) => {
+      const video = await Video.create({ title, cloudURL });
+      return video;
+    },
 
-    //   return { token, profile };
-    // },
+    addUser: async (parent, { name, email, password }) => {
+      const user = await User.create({ name, email, password });
+      const token = signToken(user);
+
+      return { token, user };
+    },
 
     // Mutation to login
-    // login: async (parent, { email, password }) => {
-    //   const user = await User.findOne({ email });
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
-    //   if (!user) {
-    //     throw new AuthenticationError("No profile with this email found!");
-    //   }
+      if (!user) {
+        throw new AuthenticationError("No profile with this email found!");
+      }
 
-    //   const correctPw = await User.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
-    //   if (!correctPw) {
-    //     throw new AuthenticationError("Incorrect password!");
-    //   }
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect password!");
+      }
 
-    //   const token = signToken(user);
-    //   return { token, profile };
-    // },
+      const token = signToken(user);
+      return { token, user };
+    },
 
     // Mutation for user to remove their own profile
     // removeProfile: async (parent, args, context) => {
@@ -108,7 +113,7 @@ const resolvers = {
     //   }
     //   throw new AuthenticationError("You need to be logged in!");
     // },
-  // },
+  },
 };
 
 module.exports = resolvers;

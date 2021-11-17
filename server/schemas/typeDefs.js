@@ -39,7 +39,9 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addVideo(title: String!): Video
+    addVideo(title: String!, cloudURL: String!): Video
+    addUser(name: String!, email: String!, password: String!): User
+    login(email: String!, password: String!): Auth
   }
 `;
 
