@@ -42,6 +42,10 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
   },
+  // Query: {
+  //   profiles: async () => {
+  //     return Profile.find();
+  //   },
 
   Mutation: {
     // Mutation to add a video
