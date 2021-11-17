@@ -16,7 +16,6 @@ const typeDefs = gql`
     dislikes: Int
     views: Int
     publishedDate: String
-    url: String!
   }
 
   type Genre {

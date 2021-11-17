@@ -23,10 +23,6 @@ const videoSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  url: {
-    type: String,
-    required: true
-  },
   users: [
     {
       type: Schema.Types.ObjectId,
