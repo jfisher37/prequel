@@ -12,12 +12,15 @@ const videoSchema = new Schema({
   },
   likes: {
     type: Number,
+    default: 0,
   },
   dislikes: {
     type: Number,
+    default: 0,
   },
   views: {
     type: Number,
+    default: 0,
   },
   publishDate: {
     type: Date,
