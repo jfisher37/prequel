@@ -1,9 +1,9 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import Video from '../components/ContentList';
+import Video from '../components/VideoList';
 
-// import { QUERY_PROFILES } from '../utils/queries';
+import { QUERY_PROFILES } from '../utils/queries';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_VIDEO);
