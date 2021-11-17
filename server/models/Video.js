@@ -6,6 +6,10 @@ const videoSchema = new Schema({
     required: true,
     trim: true,
   },
+  cloudURL: {
+    type: String,
+    required: true,
+  },
   likes: {
     type: Number,
   },
