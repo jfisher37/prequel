@@ -2,6 +2,9 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const { typeDefs, resolvers } = require('./schemas');
 // Import `authMiddleware()` function to be configured with the Apollo Server
 const { authMiddleware } = require('./utils/auth');
@@ -15,7 +18,10 @@ const server = new ApolloServer({
   resolvers,
   // Add context to our server so data from the `authMiddleware()` function can pass data to our resolver functions
   context: authMiddleware,
+  playground: true,
 });
+
+const cloudinary = require("cloudinary");
 
 server.applyMiddleware({ app });
 

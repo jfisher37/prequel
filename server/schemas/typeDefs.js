@@ -27,7 +27,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-   
+    uploadVideo(video: String): String
   }
 `;
 
