@@ -16,6 +16,7 @@ const typeDefs = gql`
     dislikes: Int
     views: Int
     publishedDate: String
+    url: String!
   }
 
   type Genre {
@@ -25,16 +26,12 @@ const typeDefs = gql`
 
   type Auth {
     token: ID!
-    profile: Profile
+    user: User
   }
 
   type Query {
-   videos: [Video]
+   videos: [Video]!
    video: Video
-  }
-
-  type Mutation {
-   
   }
 `;
 
