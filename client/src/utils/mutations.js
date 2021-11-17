@@ -17,7 +17,6 @@ export const ADD_SKILL = gql`
     addSkill(profileId: $profileId, skill: $skill) {
       _id
       name
-      skills
     }
   }
 `;
@@ -39,7 +38,6 @@ export const REMOVE_SKILL = gql`
     removeSkill(skill: $skill) {
       _id
       name
-      skills
     }
   }
 `;

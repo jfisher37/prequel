@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, model } = require("mongoose");
+
 const genreSchema = new Schema({
   name: {
     type: String,
@@ -14,6 +14,6 @@ const genreSchema = new Schema({
   ],
 });
 
-const Genre = mongoose.model("Genre", genreSchema);
+const Genre = model("Genre", genreSchema);
 
 module.exports = Genre;

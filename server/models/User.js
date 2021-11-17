@@ -6,7 +6,6 @@ const userSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   email: {
@@ -37,6 +36,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = mongoose.model("User", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

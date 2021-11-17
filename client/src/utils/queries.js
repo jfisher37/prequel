@@ -18,7 +18,7 @@ export const QUERY_PROFILES = gql`
     profiles {
       _id
       name
-      skills
+     
     }
   }
 `;
@@ -28,7 +28,7 @@ export const QUERY_SINGLE_PROFILE = gql`
     profile(profileId: $profileId) {
       _id
       name
-      skills
+      
     }
   }
 `;
@@ -38,7 +38,40 @@ export const QUERY_ME = gql`
     me {
       _id
       name
-      skills
+      
     }
   }
 `;
+
+
+// query findUsers {
+//   users{
+//     email
+//     password
+//     name
+//   }
+// }
+
+// query findVids {
+//   videos{
+//     _id
+//     title
+//     cloudURL
+//   }
+// }
+
+// query findVid ($id: ID!){
+//   video(_id: $id){
+//     title
+//     cloudURL
+//   }
+// }
+
+// mutation login($email: String!, $password: String!){
+//   login(email: $email, password: $password){
+//     token
+//     user{
+//       name
+//     }
+//   }
+// }

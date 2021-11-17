@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, model } = require("mongoose");
 
 const videoSchema = new Schema({
   title: {
@@ -13,12 +12,15 @@ const videoSchema = new Schema({
   },
   likes: {
     type: Number,
+    default: 0,
   },
   dislikes: {
     type: Number,
+    default: 0,
   },
   views: {
     type: Number,
+    default: 0,
   },
   publishDate: {
     type: Date,
@@ -38,6 +40,6 @@ const videoSchema = new Schema({
   ],
 });
 
-const Video = mongoose.model("Video", videoSchema);
+const Video = model("Video", videoSchema);
 
 module.exports = Video;

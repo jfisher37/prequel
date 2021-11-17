@@ -10,34 +10,34 @@ const resolvers = {
     },
 
     // Query for one user
-    user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId });
+    user: async (parent, { _id }) => {
+      return User.findById(_id);
     },
 
     // Query for all videos
     videos: async () => {
-      return Video.find();
+      return await Video.find();
     },
 
     // Query for one video
-    video: async (parent, { videoId }) => {
-      return Video.findOne({ _id: videoId });
+    video: async (parent, { _id }) => {
+      return await Video.findById(_id);
     },
 
     // Query for all genres
     genres: async () => {
-      return Genre.find();
+      return await Genre.find();
     },
 
     // Query for one genre
-    genre: async (parent, { genreId }) => {
-      return Genre.findOne({ _id: genreId });
+    genre: async (parent, { _id }) => {
+      return await Genre.findById(_id);
     },
 
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -48,12 +48,17 @@ const resolvers = {
   //   },
 
   Mutation: {
-    // Mutation to add a user
+    // Mutation to add a video
+    addVideo: async (parent, { title, cloudURL }) => {
+      const video = await Video.create({ title, cloudURL });
+      return video;
+    },
+
     addUser: async (parent, { name, email, password }) => {
       const user = await User.create({ name, email, password });
       const token = signToken(user);
 
-      return { token, profile };
+      return { token, user };
     },
 
     // Mutation to login
@@ -64,23 +69,23 @@ const resolvers = {
         throw new AuthenticationError("No profile with this email found!");
       }
 
-      const correctPw = await User.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");
       }
 
       const token = signToken(user);
-      return { token, profile };
+      return { token, user };
     },
 
     // Mutation for user to remove their own profile
-    removeProfile: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOneAndDelete({ _id: context.user._id });
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
+    // removeProfile: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findOneAndDelete({ _id: context.user._id });
+    //   }
+    //   throw new AuthenticationError("You need to be logged in!");
+    // },
 
     // Add a third argument to the resolver to access data in our `context`
     // addSkill: async (parent, { profileId, skill }, context) => {
