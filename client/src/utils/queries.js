@@ -1,73 +1,76 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_VIDEOS = gql`
-  query allVideos {
+  query allVids {
     videos {
       _id
       title
       cloudURL
-    }
-  }
-`
-export const QUERY_PROFILES = gql`
-  query allProfiles {
-    profiles {
-      _id
-      name
-     
+      likes
+      dislikes
+      views
+      publishDate
     }
   }
 `;
 
-export const QUERY_SINGLE_PROFILE = gql`
-  query singleProfile($profileId: ID!) {
-    profile(profileId: $profileId) {
-      _id
-      name
-      
+export const QUERY_SINGLE_VIDEO = gql`
+  query singleVid($id: ID!) {
+    video(_id: $id) {
+      title
+      cloudURL
+      likes
+      dislikes
+      views
+      publishDate
     }
   }
 `;
 
-export const QUERY_ME = gql`
-  query me {
-    me {
+export const QUERY_USERS = gql`
+  query allUsers {
+    users {
       _id
       name
-      
+      email
     }
   }
 `;
 
+export const QUERY_SINGLE_USER = gql`
+  query singleUser($id: ID!) {
+    user(_id: $id) {
+      name
+      email
+    }
+  }
+`;
 
-// query findUsers {
-//   users{
-//     email
-//     password
-//     name
-//   }
-// }
+export const QUERY_GENRES = gql`
+  query allGenres {
+    genres {
+      name
+      videos
+    }
+  }
+`;
 
-// query findVids {
-//   videos{
-//     _id
-//     title
-//     cloudURL
-//   }
-// }
+export const QUERY_SINGLE_GENRE = gql`
+  query singleGenre($id: ID!) {
+    genre(_id: $id) {
+      name
+      videos
+    }
+  }
+`;
 
-// query findVid ($id: ID!){
-//   video(_id: $id){
-//     title
-//     cloudURL
-//   }
-// }
-
-// mutation login($email: String!, $password: String!){
-//   login(email: $email, password: $password){
-//     token
-//     user{
+// export const QUERY_ME = gql`
+//   query me {
+//     me {
+//       _id
 //       name
 //     }
 //   }
-// }
+// `;
+
+
