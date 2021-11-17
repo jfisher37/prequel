@@ -5,6 +5,7 @@ export const QUERY_VIDEOS = gql`
     videos {
       _id
       title
+      cloudURL
     }
   }
 `
