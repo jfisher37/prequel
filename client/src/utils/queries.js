@@ -1,5 +1,18 @@
 import { gql } from '@apollo/client';
 
+export const QUERY_VIDEOS = gql`
+  query allVideos {
+    videos {
+      _id
+      title
+      cloudURL
+    }
+  }
+`
+
+
+
+
 export const QUERY_PROFILES = gql`
   query allProfiles {
     profiles {
