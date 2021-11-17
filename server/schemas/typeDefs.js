@@ -11,23 +11,24 @@ const typeDefs = gql`
   type Video {
     _id: ID
     title: String!
-    likes: int
-    dislikes: int
-    views: int
+    likes: Int
+    dislikes: Int
+    views: Int
     publishedDate: String
+    video: String!
   }
 
   type Auth {
     token: ID!
-    profile: Profile
+    user: User
   }
 
   type Query {
-   videos: [Video]
+    videos: [Video]
   }
 
   type Mutation {
-    uploadVideo(video: String): String
+    uploadVideo(video: String!): Video
   }
 `;
 

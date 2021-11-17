@@ -1,11 +1,16 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile } = require('../models');
+const { User, Video, Genre } = require('../models');
 const { signToken } = require('../utils/auth');
 const cloudinary = require("cloudinary");
 
 const resolvers = {
+  Query: {
+    videos: async () => {
+      return await Video.find()
+    }
+  },
   Mutation: {
-    uploadPhoto: async (_, { video }) => {
+    uploadVideo: async (parent, { video }) => {
       //initialize cloudinary
       cloudinary.config({
         cloud_name: process.env.CLOUDINARY_NAME,
@@ -14,7 +19,7 @@ const resolvers = {
       });
 
       try {
-        const result = await cloudinary.v2.uploader.upload(photo, {
+        const result = await cloudinary.v2.uploader.upload(video, {
           //here i chose to allow only jpg and png upload
           allowed_formats: ["jpg", "png"],
           //generates a new id for each uploaded image
