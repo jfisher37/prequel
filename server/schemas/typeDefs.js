@@ -11,11 +11,11 @@ const typeDefs = gql`
   type Video {
     _id: ID
     title: String!
+    cloudURL: String!
     likes: Int
     dislikes: Int
     views: Int
     publishedDate: String
-    url: String!
   }
 
   type Genre {

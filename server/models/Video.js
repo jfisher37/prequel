@@ -6,6 +6,10 @@ const videoSchema = new Schema({
     required: true,
     trim: true,
   },
+  cloudURL: {
+    type: String,
+    required: true,
+  },
   likes: {
     type: Number,
   },
@@ -18,10 +22,6 @@ const videoSchema = new Schema({
   publishDate: {
     type: Date,
     default: Date.now(),
-  },
-  url: {
-    type: String,
-    required: true
   },
   users: [
     {
