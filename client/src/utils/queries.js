@@ -42,3 +42,36 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+
+// query findUsers {
+//   users{
+//     email
+//     password
+//     name
+//   }
+// }
+
+// query findVids {
+//   videos{
+//     _id
+//     title
+//     cloudURL
+//   }
+// }
+
+// query findVid ($id: ID!){
+//   video(_id: $id){
+//     title
+//     cloudURL
+//   }
+// }
+
+// mutation login($email: String!, $password: String!){
+//   login(email: $email, password: $password){
+//     token
+//     user{
+//       name
+//     }
+//   }
+// }
