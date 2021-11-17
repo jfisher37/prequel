@@ -13,12 +13,11 @@ export const ADD_USER = gql`
 export const ADD_VIDEO = gql`
   mutation addVideo($title: String!, $cloudURL: String!) {
     addVideo(title: $title, cloudURL: $cloudURL) {
-      video {
         _id
         title
         cloudURL
         publishDate
-      }
+     
     }
   }
 `;
