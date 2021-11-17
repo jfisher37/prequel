@@ -9,10 +9,14 @@ function CloudinaryUploadWidget() {
         (error, result) => {
             if (!error && result && result.event === "success") {
                 console.log("Done! Here is the image info: ", result.info);
+                document
+                    .getElementById("uploadedImage")
+                    .setAttribute("src", result.info.secure_url)
+                console.log(result.info.secure_url);
             }
         }
     );
-    
+
     const uploadClick = () => {
         myWidget.open()
     }
