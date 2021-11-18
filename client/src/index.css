@@ -1,3 +1,95 @@
-body {
-  background-color: burlywood;
+:root {
+  --navyBlue: #000342;
+  --dustBlue: #2f484d;
+  --LdustBlue: #43676E;
+  --green: #4a4317;
+  --gold: #C48600;
+  --red: #812301;
+  --maroon: #301408;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+.loginForm {
+  background-color: var(--LdustBlue);
+  width: 300px;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.footer-positioning {
+  padding-bottom: 2.5rem;
+  background-color: var(--dustBlue);
+}
+
+footer {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  height: 2.5rem;
+}
+
+nav {
+  background-color: var(--navyBlue)
+}
+
+.navbar-brand {
+  font-family: 'Limelight', cursive;
+  font-size: 3.25rem;
+}
+
+.navbar-light .navbar-brand {
+  color: var(--gold);
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+}
+
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+  color: var(--gold);
+}
+
+.nav-item {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+}
+
+/* https://codingyaar.com/responsive-bootstrap-navbar-with-logo-centered-above-navbar/ */
+
+.navbar .navbar-nav .nav-link {
+  color: var(--gold);
+  font-size: 1.1em;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #808080;
+}
+
+@media only screen and (min-width: 960px) {
+  .navbar {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .navbar .navbar-nav {
+    border-bottom: 2px solid var(--dustBlue);
+  }
+
+  .navbar .nav-item {
+    padding: 0.5em 1em;
+  }
+}
+
+.navbar .navbar-nav {
+  margin-top: 0.5em;
+  border-top: 2px solid var(--dustBlue);
 }
