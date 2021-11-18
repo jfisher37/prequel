@@ -1,7 +1,6 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import Col from "react-bootstrap/Col";
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 function CloudinaryUploadWidget() {
     const myWidget = window.cloudinary.createUploadWidget(
@@ -13,9 +12,11 @@ function CloudinaryUploadWidget() {
             if (!error && result && result.event === "success") {
                 console.log("Done! Here is the video info: ", result.info);
                 console.log(result.info.secure_url);
+                document.getElementById("videoTitle").setAttribute("src", result.info.secure_url)
             }
         }
     );
+
     const uploadClick = () => {
         myWidget.open()
     }
@@ -23,7 +24,7 @@ function CloudinaryUploadWidget() {
         <div>
             <Col sm={5}>
                 <Form.Group as={Col} controlId="formGridEmail">
-                    <Form.Label>Video Title</Form.Label>
+                    <Form.Label id="videoTitle">Video Title</Form.Label>
                     <Form.Control />
                 </Form.Group>
             </Col>
