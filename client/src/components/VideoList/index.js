@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 
 // A page of all the videos, passed into the Home.js file
 
@@ -19,16 +20,18 @@ const VideoList = ({ videos }) => {
     <div>
       {videos &&
         videos.map((video) => (
-          <div>
-            <h2>{video.title}</h2>
-            <h3>{video.publishDate}</h3>
-            <div>Posted by: {video.videoAuthor}</div>
-            <Link to={`/videos/${video._id}`}>
-              <video style={{ width: 660, height: "auto" }}>
-                <source src={video.cloudURL} type="video/mp4" />
-              </video>
-            </Link>
-          </div>
+          <Card className="text-center">
+            <Card.Header as="h2">{video.title}</Card.Header>
+            <Card.Body>
+              <Card.Title>{video.publishDate}</Card.Title>
+              <div>Posted by: {video.videoAuthor}</div>
+              <Link to={`/videos/${video._id}`}>
+                <video style={{ width: 660, height: "auto" }}>
+                  <source src={video.cloudURL} type="video/mp4" />
+                </video>
+              </Link>
+            </Card.Body>
+          </Card>
         ))}
     </div>
   );
