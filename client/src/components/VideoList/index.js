@@ -13,19 +13,23 @@ const VideoList = ({ videos }) => {
   if (!videos.length) {
     return <h3>No Videos Yet!</h3>;
   }
+  console.log(videos);
 
   return (
     <div>
-      {videos && videos.map((video) => (
-        <div>
-          <div>{video.title}</div>
-          <div>{video.publishDate}</div>
-          <video style={{ width: 660, height: 'auto' }} controls>
-            <source src={video.cloudURL} type="video/mp4" />
-          </video>
-          <Link to={`/videos/${video._id}`}>Click to see in a new tab.</Link>
-        </div>
-      ))}
+      {videos &&
+        videos.map((video) => (
+          <div>
+            <h2>{video.title}</h2>
+            <h3>{video.publishDate}</h3>
+            <div>Posted by: {video.videoAuthor}</div>
+            <Link to={`/videos/${video._id}`}>
+              <video style={{ width: 660, height: "auto" }}>
+                <source src={video.cloudURL} type="video/mp4" />
+              </video>
+            </Link>
+          </div>
+        ))}
     </div>
   );
 };

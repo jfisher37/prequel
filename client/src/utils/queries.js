@@ -10,6 +10,7 @@ export const QUERY_VIDEOS = gql`
       dislikes
       views
       publishDate
+      videoAuthor
     }
   }
 `;
@@ -73,5 +74,3 @@ export const QUERY_SINGLE_GENRE = gql`
 //     }
 //   }
 // `;
-
-

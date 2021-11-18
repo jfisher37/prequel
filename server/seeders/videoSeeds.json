@@ -1,12 +1,15 @@
 [
     {
       "title": "Movie",
-      "cloudURL": "https://www.youtube.com/watch?v=6oNpepc4PPE"
+      "cloudURL": "https://res.cloudinary.com/demo/video/upload/dog.mp4",
+      "videoAuthor": "lamperouge1218"
+      
     },
 
     {
       "title": "Movie1",
-      "cloudURL": "https://www.youtube.com/watch?v=6oNpepc4PPE"
+      "cloudURL": "https://res.cloudinary.com/demo/video/upload/dog.mp4",
+      "videoAuthor": "balsawood"
     }
   ]
   
