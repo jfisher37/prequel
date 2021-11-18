@@ -78,19 +78,13 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    removeVideo: async (parent, { _id }, context) => {
+    removeVideo: async (parent, { videoId }, context) => {
       if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
+        const video = await Video.findOneAndDelete({
+          _id: videoId,
         });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
-        );
-
-        return thought;
+        return video;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

@@ -32,5 +32,9 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const REMOVE_VIDEO = gql`
+  mutation removeVideo($videoId:)
+`
+
 export default ADD_VIDEO;
 
