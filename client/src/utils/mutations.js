@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 export const ADD_USER = gql`
   mutation addUser($name: String!, $email: String!, $password: String!) {
     addUser(name: $name, email: $email, password: $password) {
-        token
+      token
     }
   }
 `;
@@ -11,11 +11,10 @@ export const ADD_USER = gql`
 export const ADD_VIDEO = gql`
   mutation addVideo($title: String!, $cloudURL: String!) {
     addVideo(title: $title, cloudURL: $cloudURL) {
-        _id
-        title
-        cloudURL
-        publishDate
-     
+      _id
+      title
+      cloudURL
+      publishDate
     }
   }
 `;
@@ -47,4 +46,3 @@ export const REMOVE_VIDEO = gql`
 `
 
 export default ADD_VIDEO;
-
