@@ -22,8 +22,12 @@ const SingleVideo = () => {
     }
 
     return (
-        <div>Hi
-            <p>{video.title}</p>
+        <div>
+            <div>{video.title}</div>
+            <div>{video.publishDate}</div>
+            <video style={{ width: 660, height: 'auto' }} controls>
+                <source src={video.cloudURL} type="video/mp4" />
+            </video>
         </div>
     )
 };

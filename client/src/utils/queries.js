@@ -16,7 +16,11 @@ export const QUERY_VIDEOS = gql`
 
 export const QUERY_SINGLE_VIDEO = gql`
   query singleVid($videoId: ID!) {
+<<<<<<< HEAD
     video(_id: $videoId) {
+=======
+    video(videoId: $videoId) {
+>>>>>>> 351583ea307e6e9776b180f3d9109f25b752ca4f
       _id
       title
       cloudURL
