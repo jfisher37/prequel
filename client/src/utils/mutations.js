@@ -34,4 +34,5 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export default ADD_VIDEO;
 
