@@ -78,6 +78,22 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    removeVideo: async (parent, { _id }, context) => {
+      if (context.user) {
+        const thought = await Thought.findOneAndDelete({
+          _id: thoughtId,
+          thoughtAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { thoughts: thought._id } }
+        );
+
+        return thought;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
 
     // Mutation for user to remove their own profile
     // removeProfile: async (parent, args, context) => {
