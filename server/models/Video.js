@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const dateFormat = require('../utils/dateFormat');
 
 const videoSchema = new Schema({
   title: {
@@ -24,7 +25,8 @@ const videoSchema = new Schema({
   },
   publishDate: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
   users: [
     {

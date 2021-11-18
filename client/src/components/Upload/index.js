@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import { Link } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
 import ADD_VIDEO from "../../utils/mutations";
 import Button from 'react-bootstrap/Button';
+import Auth from '../../utils/auth';
 
 function CloudinaryUploadWidget() {
     const [title, setTitle] = useState("")
@@ -20,7 +22,6 @@ function CloudinaryUploadWidget() {
                 console.log("Done! Here is the image info: ", result.info);
                 setURL(result.info.secure_url);
             }
-
         }
     );
 
@@ -30,42 +31,48 @@ function CloudinaryUploadWidget() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(title);
         try {
-            console.log(`${title} ${URL}`)
             addVideo({
                 variables: {
                     title: title,
                     cloudURL: URL,
                 }
             });
+            setTitle('');
         } catch (err) {
             console.error(err);
         }
-
     }
+
     return (
         <div>
-            <button
-                id="upload_widget"
-                onClick={uploadClick}
-                className="cloudinary-button"
-            >
-                Upload
-            </button>
-            <Form>
-                <Col sm={5}>
-                    <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label>Video Title</Form.Label>
-                        <Form.Control onChange={(event) => {
-                            setTitle(event.target.value)
-                        }} />
-                    </Form.Group>
-                </Col>
-                <Button variant="primary" type="submit" onClick={handleFormSubmit}>
-                    Submit
-                </Button>
-            </Form>
+            {Auth.loggedIn() ? (
+                <div>
+                    <button
+                        id="upload_widget"
+                        onClick={uploadClick}
+                        className="cloudinary-button"
+                    >
+                        Upload
+                    </button>
+                    <Form>
+                        <Col sm={5}>
+                            <Form.Group as={Col} controlId="formGridEmail">
+                                <Form.Label>Video Title</Form.Label>
+                                <Form.Control onChange={(event) => {
+                                    setTitle(event.target.value)
+                                }} />
+                            </Form.Group>
+                        </Col>
+                        <Button variant="primary" type="submit" onClick={handleFormSubmit}>
+                            Submit
+                        </Button>
+                    </Form>
+                </div>
+            ) : (
+                <p>You need to be logged in to upload a video. Please {' '}
+                    <Link to="/login">login</Link> or <Link to="/signup">signup.</Link></p>
+            )}
         </div>
     );
 }

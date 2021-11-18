@@ -16,13 +16,14 @@ const VideoList = ({ videos }) => {
 
   return (
     <div>
-      {videos.map((videos) => (
+      {videos.map((video) => (
         <div>
-          <div>{videos.title}</div>
-          <div>{videos.cloudURL}</div>
-          <video controls>
-            <source src={videos.cloudURL} type="video/mp4" />
+          <div>{video.title}</div>
+          <div>{video.publishDate}</div>
+          <video style={{ width: 660, height: 'auto' }} controls>
+            <source src={video.cloudURL} type="video/mp4" />
           </video>
+          <Link to={`/videos/${video._id}`}>Click to see in a new tab.</Link>
         </div>
       ))}
     </div>

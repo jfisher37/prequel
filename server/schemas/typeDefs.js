@@ -30,7 +30,7 @@ const typeDefs = gql`
 
   type Query {
    videos: [Video]!
-   video(_id: ID!): Video
+   video(videoId: ID!): Video
    users: [User]
    user(_id: ID!): User
    genres: [Genre]

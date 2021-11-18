@@ -20,8 +20,8 @@ const resolvers = {
     },
 
     // Query for one video
-    video: async (parent, { _id }) => {
-      return await Video.findById(_id);
+    video: async (parent, { videoId }) => {
+      return await Video.findById({ _id: videoId });
     },
 
     // Query for all genres
@@ -58,7 +58,7 @@ const resolvers = {
       const user = await User.create({ name, email, password });
       const token = signToken(user);
       console.log(user.name);
-      return {token, user};
+      return { token, user };
     },
 
     // Mutation to login
