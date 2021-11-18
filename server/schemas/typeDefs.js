@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
@@ -6,7 +6,6 @@ const typeDefs = gql`
     name: String!
     email: String!
     password: String!
-    videos: [Video]
   }
 
   type Video {
@@ -32,17 +31,17 @@ const typeDefs = gql`
   }
 
   type Query {
-    videos: [Video]!
-    video(videoId: ID!): Video
-    users: [User]
-    user(_id: ID!): User
-    genres: [Genre]
-    genre(_id: ID!): Genre
-    me: User
+   videos: [Video]!
+   video(videoId: ID!): Video
+   users: [User]
+   user(_id: ID!): User
+   genres: [Genre]
+   genre(_id: ID!): Genre
+   me: User
   }
 
   type Mutation {
-    addVideo(title: String!, cloudURL: String!): Video
+    addVideo(title: String!, cloudURL: String!, videoAuthor: String!): Video
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeVideo(videoId: ID!): Video

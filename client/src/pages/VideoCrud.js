@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
 // import Video from '../components/VideoList';
-import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 import Auth from '../utils/auth'
 import { QUERY_SINGLE_VIDEO } from '../utils/queries';
 import { REMOVE_VIDEO } from '../utils/mutations';
@@ -22,16 +22,24 @@ const VideoCrud = () => {
         return <div>Loading...</div>;
     }
 
-    // const [ deleteVideo, { error }] = useMutation(REMOVE_VIDEO), {
-    //     variables: { videoId: videoId },
-    // }
+    // const [deleteVideo, { error }] = useMutation(REMOVE_VIDEO);
+    
 
-    function deleteFunction() {
+    async function deleteFunction(videoId) {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
             return false;
-          }
+        }
+
+        // try {
+        //     const {data} = await deleteVideo({
+        //         variables : {videoId}
+        //     })
+        // } catch (err) {
+        //     console.log(err)
+        // }
+
     }
 
     return (
