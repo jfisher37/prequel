@@ -16,7 +16,7 @@ const VideoList = ({ videos }) => {
 
   return (
     <div>
-      {videos.map((video) => (
+      {videos && videos.map((video) => (
         <div>
           <div>{video.title}</div>
           <div>{video.publishDate}</div>
