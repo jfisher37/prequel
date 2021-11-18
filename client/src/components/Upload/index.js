@@ -30,15 +30,14 @@ function CloudinaryUploadWidget() {
 
   const handleFormSubmit = async (event) => {
       event.preventDefault();
-       console.log(title);
        try {
-        console.log(`${title} ${URL}`)
       addVideo({
           variables: {
               title: title,
               cloudURL: URL,
           }
       });
+      setTitle("");
     } catch (err) {
       console.error(err);
     }
@@ -59,7 +58,7 @@ function CloudinaryUploadWidget() {
             <Form.Label>Video Title</Form.Label>
             <Form.Control onChange={(event) => {
                 setTitle(event.target.value)
-            }} />
+            }} value={title} />
           </Form.Group>
         </Col>
         <Button variant="primary" type="submit" onClick={handleFormSubmit}>
