@@ -15,8 +15,9 @@ export const QUERY_VIDEOS = gql`
 `;
 
 export const QUERY_SINGLE_VIDEO = gql`
-  query singleVid($id: ID!) {
-    video(_id: $id) {
+  query singleVid($videoId: ID!) {
+    video(videoId: $id) {
+      _id
       title
       cloudURL
       likes

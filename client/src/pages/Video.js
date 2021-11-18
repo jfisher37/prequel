@@ -1,30 +1,29 @@
-// import React from 'react';
-// import { useQuery } from '@apollo/client';
+import React from 'react';
 
-// // import Video from '../components/VideoList';
-// import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+// Import the `useParams()` hook from React Router
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 
-// import { QUERY_VIDEOS } from '../utils/queries';
+import { QUERY_SINGLE_VIDEO } from '../utils/queries';
 
-// const Home = () => {
-//   const { loading, data } = useQuery(QUERY_VIDEOS);
-//   const video = data?.video || [];
+const SingleVideo = () => {
+    const { videoId } = useParams();
 
-//   return (
-//     <main>
-//       <div className="flex-row justify-center">
-//         <div className="col-12 col-md-10 my-3">
-//           {loading ? (
-//             <div>Loading...</div>
-//           ) : (
-//             <Video
-//               video={video}
-//             />
-//           )}
-//         </div>
-//       </div>
-//     </main>
-//   );
-// };
+    const { loading, data } = useQuery(QUERY_SINGLE_VIDEO, {
+        variables: { videoId: videoId },
+    });
 
-// export default Home;
+    const video = data?.video || {};
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div>Hi
+            <p>{video.title}</p>
+        </div>
+    )
+};
+
+export default SingleVideo;
