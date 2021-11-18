@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './index.css';
 
 import Home from "./pages/Home";
+import VideoCrud from "./pages/VideoCrud"
 import Video from "./pages/Video";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -61,6 +62,9 @@ function App() {
           <Route exact path="/videos/:videoId">
             <Video />
           </Route>
+          <Route exact path="/videosCrud/:videoId">
+              <VideoCrud />
+            </Route>
         </div>
         <Footer />
       </Router>

@@ -49,8 +49,8 @@ const resolvers = {
 
   Mutation: {
     // Mutation to add a video
-    addVideo: async (parent, { title, cloudURL }) => {
-      const video = await Video.create({ title, cloudURL });
+    addVideo: async (parent, { title, cloudURL, videoAuthor }) => {
+      const video = await Video.create({ title, cloudURL, videoAuthor });
       return video;
     },
 
@@ -77,6 +77,17 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+
+    removeVideo: async (parent, { videoId }, context) => {
+      if (context.user) {
+        const video = await Video.findOneAndDelete({
+          _id: videoId,
+        });
+
+        return video;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     // Mutation for user to remove their own profile

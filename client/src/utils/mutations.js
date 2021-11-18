@@ -9,11 +9,12 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_VIDEO = gql`
-  mutation addVideo($title: String!, $cloudURL: String!) {
-    addVideo(title: $title, cloudURL: $cloudURL) {
+  mutation addVideo($title: String!, $cloudURL: String!, $videoAuthor: String!) {
+    addVideo(title: $title, cloudURL: $cloudURL, videoAuthor: $videoAuthor) {
       _id
       title
       cloudURL
+      videoAuthor
       publishDate
     }
   }
@@ -30,5 +31,19 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const REMOVE_VIDEO = gql`
+  mutation removeVideo($videoId: ID!) {
+    removeVideo(videoId: $videoId) {
+      _id
+      title
+      cloudURL
+      likes
+      dislikes
+      views
+      publishDate
+    }
+  }
+`
 
 export default ADD_VIDEO;

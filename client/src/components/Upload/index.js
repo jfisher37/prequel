@@ -29,7 +29,7 @@ function CloudinaryUploadWidget() {
   const uploadClick = () => {
     myWidget.open();
   };
-
+  console.log(Auth.getProfile().data.name)
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -37,7 +37,7 @@ function CloudinaryUploadWidget() {
         variables: {
           title: title,
           cloudURL: URL,
-          videoAuthor: author,
+          videoAuthor: Auth.getProfile().data.name,
         },
       });
       setTitle("");
