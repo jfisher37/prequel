@@ -24,6 +24,7 @@ const VideoList = ({ videos }) => {
             <source src={video.cloudURL} type="video/mp4" />
           </video>
           <Link to={`/videos/${video._id}`}>Click to see in a new tab.</Link>
+          <div><Link to={`/videosCrud/${video._id}`}>Click for CRUD</Link></div>
         </div>
       ))}
     </div>

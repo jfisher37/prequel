@@ -78,6 +78,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    
     removeVideo: async (parent, { videoId }, context) => {
       if (context.user) {
         const video = await Video.findOneAndDelete({

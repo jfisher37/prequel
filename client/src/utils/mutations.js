@@ -33,7 +33,17 @@ export const LOGIN_USER = gql`
 `;
 
 export const REMOVE_VIDEO = gql`
-  mutation removeVideo($videoId:)
+  mutation removeVideo($videoId: ID!) {
+    video(videoId: $videoId) {
+      _id
+      title
+      cloudURL
+      likes
+      dislikes
+      views
+      publishDate
+    }
+  }
 `
 
 export default ADD_VIDEO;
