@@ -9,10 +9,12 @@ import { QUERY_SINGLE_VIDEO } from '../utils/queries';
 const SingleVideo = () => {
     const { videoId } = useParams();
 
+    console.log(videoId);
+
     const { loading, data } = useQuery(QUERY_SINGLE_VIDEO, {
         variables: { videoId: videoId },
     });
-
+    console.log(data);
     const video = data?.video || {};
 
     if (loading) {
