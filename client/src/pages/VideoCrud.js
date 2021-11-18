@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 // import Video from '../components/VideoList';
 import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
@@ -21,6 +22,10 @@ const VideoCrud = () => {
         return <div>Loading...</div>;
     }
 
+    function deleteFunction() {
+        
+    }
+
     return (
         <div>
             <div>{video.title}</div>
@@ -28,6 +33,7 @@ const VideoCrud = () => {
             <video style={{ width: 660, height: 'auto' }} controls>
                 <source src={video.cloudURL} type="video/mp4" />
             </video>
+            <Button variant="primary" type="submit" onClick={deleteFunction}>Delete</Button>
         </div>
     )
 

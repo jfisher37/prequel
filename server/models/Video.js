@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const dateFormat = require('../utils/dateFormat');
+const dateFormat = require("../utils/dateFormat");
 
 const videoSchema = new Schema({
   title: {
@@ -28,12 +28,11 @@ const videoSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  users: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
+  videoAuthor: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   genres: [
     {
       type: Schema.Types.ObjectId,
