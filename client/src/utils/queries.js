@@ -66,11 +66,11 @@ export const QUERY_SINGLE_GENRE = gql`
   }
 `;
 
-// export const QUERY_ME = gql`
-//   query me {
-//     me {
-//       _id
-//       name
-//     }
-//   }
-// `;
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      name
+    }
+  }
+`;
