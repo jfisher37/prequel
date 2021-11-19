@@ -1,6 +1,6 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
+import { useParams} from "react-router-dom";
+import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 
 import { QUERY_SINGLE_VIDEO } from "../utils/queries";
@@ -11,12 +11,7 @@ import Card from "react-bootstrap/Card";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
-
-  const location = useLocation();
-
-//   let { inc } = location.state;
   
-  console.log(location);
 
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
 

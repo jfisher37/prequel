@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 
+import { useMutation } from "@apollo/client";
+
+import { VIDEO_METRICS } from "../../utils/mutations";
+
+
+
 // A page of all the videos, passed into the Home.js file
 
 // Need a list of all videos in the DB
@@ -11,17 +17,33 @@ import Card from "react-bootstrap/Card";
 // Return brings back all videos from the DB
 
 const VideoList = ({ videos }) => {
+  const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
+  
   if (!videos.length) {
     return <h3>No Videos Yet!</h3>;
   }
   console.log(videos);
 
-  let inc = false;
+ 
 
-  const makeIncTrue = () => {
-    console.log("TRUE!!!!")
-     inc = true;
-  }
+
+  const updateMetrics = async (videoId, videoViews) => {
+    const newView = (videoViews +.5);
+    console.log(newView);
+
+    try {
+      await videoMetrics({
+        variables: {
+          videoId: videoId,
+          likes: 0,
+          dislikes: 0,
+          views: newView,
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
@@ -32,8 +54,8 @@ const VideoList = ({ videos }) => {
             <Card.Body>
               <Card.Title>{video.publishDate}</Card.Title>
               <div>Posted by: {video.videoAuthor}</div>
-              <Link to={`/videos/${video._id}`} onClick={makeIncTrue}>
-                <video style={{ width: 660, height: "auto" }}>
+              <Link to={`/videos/${video._id}`}>
+                <video style={{ width: 660, height: "auto" }} onClick={updateMetrics(video._id, video.views)}>
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
               </Link>
