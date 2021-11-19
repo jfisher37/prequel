@@ -59,7 +59,7 @@ const VideoList = ({ videos }) => {
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
               </Link>
-              <div><Link to={`/videosCrud/${video._id}`}>Click for CRUD</Link></div>
+            
             </Card.Body>
           </Card>
         ))}
