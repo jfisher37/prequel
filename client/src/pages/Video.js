@@ -33,6 +33,8 @@ const SingleVideo = () => {
   
   const newView = video.views + 1;
 
+  console.log("something")
+
 
     try {
       await videoMetrics({
