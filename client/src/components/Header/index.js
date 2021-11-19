@@ -17,9 +17,10 @@ const Header = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Link className="nav-item nav-link" to="/">Home</Link>
-          <Link className="nav-item nav-link" to="/upload"> Upload</Link>
+          
           {Auth.loggedIn() ? (
             <>
+            <Link className="nav-item nav-link" to="/upload"> Upload</Link>
               <Link className="nav-item nav-link" to="/me">
                 View My Profile
               </Link>
