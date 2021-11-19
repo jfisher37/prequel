@@ -6,6 +6,9 @@ import { useMutation } from "@apollo/client";
 import { QUERY_SINGLE_VIDEO } from "../utils/queries";
 import { VIDEO_METRICS } from "../utils/mutations";
 
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+
 const SingleVideo = () => {
   const { videoId } = useParams();
   console.log ("HI")
@@ -57,13 +60,18 @@ const SingleVideo = () => {
 
   return (
     <div>
-      <div>{video.title}</div>
-      <div>{video.publishDate}</div>
-      <p>{video.views}</p> 
-      <video style={{ width: 660, height: "auto" }} controls>
-        <source src={video.cloudURL} type="video/mp4" />
-      </video>
-      <button onClick={updateMetrics}>+view</button>
+    <Container>
+      <Card className="text-center">
+        <Card.Header as="h2">{video.title}</Card.Header>
+        <Card.Body>
+          <Card.Title>{video.publishDate}</Card.Title>
+          <Card.Title>Views: {video.views}</Card.Title>
+          <video style={{ width: 660, height: "auto" }} controls>
+            <source src={video.cloudURL} type="video/mp4" />
+          </video>
+        </Card.Body>
+      </Card>
+    </Container>
     </div>
   );
 }};
