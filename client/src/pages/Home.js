@@ -22,17 +22,17 @@ const Home = () => {
   const videos = data?.videos || [];
 
   return (
-    <main>
-      <div className="flex-row justify-center">
-        <div className="col-12 col-md-10 my-3">
+    <Container>
+      <Row>
+        <Col>
           {loading ? (
             <div>Loading...</div>
           ) : (
             <VideoList videos={videos} title="HEADER TEXT" />
           )}
-        </div>
-      </div>
-    </main>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

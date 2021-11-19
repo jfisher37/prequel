@@ -6,6 +6,7 @@ import { useQuery } from "@apollo/client";
 
 import { QUERY_SINGLE_VIDEO } from "../utils/queries";
 
+import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 
 const SingleVideo = () => {
@@ -22,15 +23,17 @@ const SingleVideo = () => {
   }
 
   return (
-    <Card className="text-center">
-      <Card.Header as="h2">{video.title}</Card.Header>
-      <Card.Body>
-        <Card.Title>{video.publishDate}</Card.Title>
-        <video style={{ width: 660, height: "auto" }} controls>
-          <source src={video.cloudURL} type="video/mp4" />
-        </video>
-      </Card.Body>
-    </Card>
+    <Container>
+      <Card className="text-center">
+        <Card.Header as="h2">{video.title}</Card.Header>
+        <Card.Body>
+          <Card.Title>{video.publishDate}</Card.Title>
+          <video style={{ width: 660, height: "auto" }} controls>
+            <source src={video.cloudURL} type="video/mp4" />
+          </video>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 

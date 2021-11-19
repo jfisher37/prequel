@@ -3,6 +3,8 @@ import { useQuery, useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
+import Container from "react-bootstrap/Container";
+
 // import Video from '../components/VideoList';
 import {
   Image,
@@ -48,7 +50,7 @@ const VideoCrud = () => {
   }
 
   return (
-    <div>
+    <Container>
       <Card className="text-center">
         <Card.Header as="h2">{video.title}</Card.Header>
         <Card.Body>
@@ -68,7 +70,7 @@ const VideoCrud = () => {
           </Button>
         </div>
       </Card>
-    </div>
+    </Container>
   );
 };
 
