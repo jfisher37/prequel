@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
@@ -12,12 +13,12 @@ import Card from "react-bootstrap/Card";
 const SingleVideo = () => {
   const { videoId } = useParams();
 
-
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
 
   const { loading, data } = useQuery(QUERY_SINGLE_VIDEO, {
     variables: { videoId: videoId },
   });
+
 
   if (loading) {
     return <div>Loading...</div>;
