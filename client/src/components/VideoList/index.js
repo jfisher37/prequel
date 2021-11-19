@@ -16,6 +16,13 @@ const VideoList = ({ videos }) => {
   }
   console.log(videos);
 
+  let inc = false;
+
+  const makeIncTrue = () => {
+    console.log("TRUE!!!!")
+     inc = true;
+  }
+
   return (
     <div>
       {videos &&
@@ -25,7 +32,7 @@ const VideoList = ({ videos }) => {
             <Card.Body>
               <Card.Title>{video.publishDate}</Card.Title>
               <div>Posted by: {video.videoAuthor}</div>
-              <Link to={`/videos/${video._id}`}>
+              <Link to={`/videos/${video._id}`} state={inc} onClick={makeIncTrue}>
                 <video style={{ width: 660, height: "auto" }}>
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
