@@ -19,6 +19,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CloudinaryUploadWidget from "./components/Upload";
 import SingleVideo from "./pages/Video"
+import Profile from "./pages/Profile"
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -64,6 +65,9 @@ function App() {
           </Route>
           <Route exact path="/videosCrud/:videoId">
               <VideoCrud />
+            </Route>
+            <Route exact path="/me">
+              <Profile />
             </Route>
         </div>
         <Footer />

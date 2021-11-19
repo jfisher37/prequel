@@ -6,12 +6,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 // import Video from '../components/VideoList';
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext,
-} from "cloudinary-react";
+
 import Auth from "../utils/auth";
 import { QUERY_SINGLE_VIDEO } from "../utils/queries";
 import { REMOVE_VIDEO } from "../utils/mutations";
@@ -19,35 +14,43 @@ import { REMOVE_VIDEO } from "../utils/mutations";
 import Card from "react-bootstrap/Card";
 
 const VideoCrud = () => {
-  const { videoId } = useParams();
+    const { videoId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_VIDEO, {
-    variables: { videoId: videoId },
-  });
+    const { loading, data } = useQuery(QUERY_SINGLE_VIDEO, {
+        variables: { videoId: videoId },
+    });
 
-  const video = data?.video || {};
+    const [deleteVideo, { error }] = useMutation(REMOVE_VIDEO);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    const video = data?.video || {};
 
-  // const [deleteVideo, { error }] = useMutation(REMOVE_VIDEO);
-
-  async function deleteFunction(videoId) {
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    if (!token) {
-      return false;
+    if (loading) {
+        return <div>Loading...</div>;
     }
 
-    // try {
-    //     const {data} = await deleteVideo({
-    //         variables : {videoId}
-    //     })
-    // } catch (err) {
-    //     console.log(err)
-    // }
-  }
+    
+    
+
+    async function deleteFunction(videoId) {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+        try {
+            const {data} = await deleteVideo({
+                variables : {videoId}
+            })
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    const deleteClick = () => {
+        deleteFunction(videoId)
+    }
+  
 
   return (
     <Container>
@@ -64,7 +67,7 @@ const VideoCrud = () => {
             className="mb-3"
             variant="primary"
             type="submit"
-            onClick={deleteFunction}
+            onClick={deleteClick}
           >
             Delete
           </Button>
