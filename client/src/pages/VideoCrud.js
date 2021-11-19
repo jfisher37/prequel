@@ -63,22 +63,12 @@ const VideoCrud = () => {
               className="mb-3 button6"
               variant="primary"
               type="submit"
-              onClick={deleteFunction}
+              onClick={deleteClick}
             >
               Delete
             </Button>
           </div>
         </Card.Body>
-        <div>
-          <Button
-            className="mb-3"
-            variant="primary"
-            type="submit"
-            onClick={deleteClick}
-          >
-            Delete
-          </Button>
-        </div>
       </Card>
     </Container>
   );
