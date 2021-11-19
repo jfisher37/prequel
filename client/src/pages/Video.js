@@ -1,6 +1,6 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
+import { useParams} from "react-router-dom";
+import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 
 import { QUERY_SINGLE_VIDEO } from "../utils/queries";
@@ -11,12 +11,7 @@ import Card from "react-bootstrap/Card";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
-
-  const location = useLocation();
-
-  //   let { inc } = location.state;
-
-  console.log(location);
+  
 
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
 
@@ -52,16 +47,10 @@ const SingleVideo = () => {
       <div>
         <Container>
           <Card className="text-center my-3">
-            <Card.Header as="h2" className="video-title">
-              {video.title}
-            </Card.Header>
-            <Card.Body className="video-body">
-              <Card.Title className="roboto-font">
-                {video.publishDate}
-              </Card.Title>
-              <Card.Title className="roboto-font">
-                Views: {video.views}
-              </Card.Title>
+            <Card.Header as="h2">{video.title}</Card.Header>
+            <Card.Body>
+              <Card.Title>{video.publishDate}</Card.Title>
+              <Card.Title>Views: {video.views}</Card.Title>
               <video style={{ width: 660, height: "auto" }} controls>
                 <source src={video.cloudURL} type="video/mp4" />
               </video>
