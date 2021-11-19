@@ -79,6 +79,21 @@ const resolvers = {
       return { token, user };
     },
 
+    videoMetrics: async (parent, {videoId, likes, dislikes, views}) => {
+      const video = await Video.findOneAndUpdate(
+              { _id: videoId },
+              {
+                likes: likes,
+                dislikes: dislikes,
+                views: views
+              },
+              {
+                new: true,
+              }
+            );
+      return video;
+    }
+
     // Mutation for user to remove their own profile
     // removeProfile: async (parent, args, context) => {
     //   if (context.user) {
