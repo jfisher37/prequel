@@ -83,6 +83,21 @@ const resolvers = {
       return { token, user };
     },
 
+    videoMetrics: async (parent, {videoId, likes, dislikes, views}) => {
+      const video = await Video.findOneAndUpdate(
+              { _id: videoId },
+              {
+                likes: likes,
+                dislikes: dislikes,
+                views: views
+              },
+              {
+                new: true,
+              }
+            );
+      return video;
+    },
+    
     removeVideo: async (parent, { videoId }, context) => {
       if (context.user) {
         const video = await Video.findOneAndDelete({
