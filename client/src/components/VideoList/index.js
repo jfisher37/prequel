@@ -22,7 +22,7 @@ const VideoList = ({ videos }) => {
         videos.map((video) => (
           <Card className="text-center my-3">
             <Card.Header as="h2" className="video-title">{video.title}</Card.Header>
-            <Card.Body>
+            <Card.Body className="video-body">
               <Card.Title className="roboto-font">{video.publishDate}</Card.Title>
               <div className="roboto-font">Posted by: {video.videoAuthor}</div>
               <Link to={`/videos/${video._id}`}>

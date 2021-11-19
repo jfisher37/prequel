@@ -6,6 +6,7 @@
   --gold: #c48600;
   --red: #812301;
   --maroon: #301408;
+  --silver: #C0C0C0;
 }
 
 /* -----Login----- */
@@ -174,11 +175,14 @@ nav {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
   background-color: var(--navyBlue);
-  color: var(--gold)
+  color: var(--gold);
+}
+
+.video-body {
+  background-color: var(--silver);
 }
 
 .roboto-font {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
-
