@@ -29,6 +29,20 @@ export const QUERY_SINGLE_VIDEO = gql`
   }
 `;
 
+export const QUERY_MY_VIDEOS = gql`
+  query myVids($videoAuthor: String!) {
+    myVideos(videoAuthor: $videoAuthor) {
+      _id
+      title
+      cloudURL
+      likes
+      dislikes
+      views
+      publishDate
+    }
+  }
+`
+
 export const QUERY_USERS = gql`
   query allUsers {
     users {

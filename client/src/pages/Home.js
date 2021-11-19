@@ -1,14 +1,14 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import CloudinaryUploadWidget from "../components/Upload";
 
-// import VideoList from '../components/VideoList';
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext,
-} from "cloudinary-react";
+
+
+// import {
+//   Image,
+//   Video,
+//   Transformation,
+//   CloudinaryContext,
+// } from "cloudinary-react";
 import { QUERY_VIDEOS } from "../utils/queries";
 
 import VideoList from "../components/VideoList";

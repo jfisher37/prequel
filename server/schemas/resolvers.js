@@ -24,6 +24,10 @@ const resolvers = {
       return await Video.findById({ _id: videoId });
     },
 
+    myVideos: async (parent, { videoAuthor }) => {
+      return await Video.find({videoAuthor: videoAuthor});
+    },
+
     // Query for all genres
     genres: async () => {
       return await Genre.find();
