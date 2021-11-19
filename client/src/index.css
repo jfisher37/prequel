@@ -6,6 +6,7 @@
   --gold: #c48600;
   --red: #812301;
   --maroon: #301408;
+  --silver: #c0c0c0;
 }
 
 /* -----Login----- */
@@ -27,12 +28,12 @@ label {
   width: 550px;
   padding: 10px;
   margin-top: 15px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .login-header {
   color: white;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-top: 10px;
 }
 
@@ -44,10 +45,10 @@ button.button6 {
   border-radius: 0.15em;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   font-weight: 400;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: var(--gold);
   box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
   text-align: center;
@@ -58,7 +59,7 @@ button.button6:active {
   top: 0.1em;
 }
 
-@media all and (max-width:30em) {
+@media all and (max-width: 30em) {
   button.button6 {
     display: block;
     margin: 0.4em auto;
@@ -147,7 +148,8 @@ nav {
   border-top: 2px solid var(--dustBlue);
 }
 
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
   color: var(--LdustBlue);
 }
 
@@ -157,7 +159,7 @@ nav {
   margin-top: 15px;
   padding-bottom: 10px;
   background-color: var(--LdustBlue);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .upload-label {
@@ -168,3 +170,25 @@ nav {
 .upload-padding-top {
   padding-top: 15px;
 }
+
+/* -----Video Card Stylings-----*/
+
+.video-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  background-color: var(--navyBlue);
+  color: var(--gold);
+}
+
+.video-body {
+  background-color: var(--silver);
+}
+
+.roboto-font {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+/*-----Video Page Link Hover-----*/
+
+

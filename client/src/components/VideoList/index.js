@@ -19,9 +19,9 @@ const VideoList = ({ videos }) => {
   let inc = false;
 
   const makeIncTrue = () => {
-    console.log("TRUE!!!!")
-     inc = true;
-  }
+    console.log("TRUE!!!!");
+    inc = true;
+  };
 
   return (
     <div>
@@ -37,7 +37,9 @@ const VideoList = ({ videos }) => {
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
               </Link>
-              <div><Link to={`/videosCrud/${video._id}`}>Click for CRUD</Link></div>
+              <div className="roboto-font">
+                <Link to={`/videosCrud/${video._id}`}>Click for CRUD</Link>
+              </div>
             </Card.Body>
           </Card>
         ))}
