@@ -47,38 +47,35 @@ function CloudinaryUploadWidget() {
   };
   return (
     <div>
-      {Auth.loggedIn() ? (
-        <div>
-          <button
-            id="upload_widget"
-            onClick={uploadClick}
-            className="cloudinary-button"
-          >
-            Upload
-          </button>
-          <Form>
-            <Col sm={5}>
-              <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>Video Title</Form.Label>
-                <Form.Control
-                  onChange={(event) => {
-                    setTitle(event.target.value);
-                  }}
-                  value={title}
-                />
-              </Form.Group>
-            </Col>
-            <Button variant="primary" type="submit" onClick={handleFormSubmit}>
-              Submit
-            </Button>
-          </Form>
-        </div>
-      ) : (
-        <p>
-          You need to be logged in to upload a video. Please{" "}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
+      <div>
+        <button
+          id="upload_widget"
+          onClick={uploadClick}
+          className="cloudinary-button"
+        >
+          Upload
+        </button>
+        <Form>
+          <Col sm={5}>
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label>Video Title</Form.Label>
+              <Form.Control
+                onChange={(event) => {
+                  setTitle(event.target.value);
+                }}
+                value={title}
+              />
+            </Form.Group>
+          </Col>
+          <Button variant="primary" type="submit" onClick={handleFormSubmit}>
+            Submit
+          </Button>
+        </Form>
+      </div>
+      <p>
+        You need to be logged in to upload a video. Please{" "}
+        <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+      </p>
     </div>
   );
 }
