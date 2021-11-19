@@ -45,6 +45,7 @@ const VideoCrud = () => {
 
     const deleteClick = () => {
         deleteFunction(videoId)
+        window.location.assign('/');
     }
   
 
