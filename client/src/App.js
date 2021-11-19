@@ -7,9 +7,11 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+
+import './index.css';
 
 import Home from "./pages/Home";
+import VideoCrud from "./pages/VideoCrud"
 import Video from "./pages/Video";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -43,27 +45,28 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div className="footer-positioning">
           <Header />
-          <div className="container">
-            <Route exact path="/">
-              <Home />
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route exact path="/upload">
+            <CloudinaryUploadWidget />
+          </Route>
+          <Route exact path="/videos/:videoId">
+            <Video />
+          </Route>
+          <Route exact path="/videosCrud/:videoId">
+              <VideoCrud />
             </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/upload">
-              <CloudinaryUploadWidget />
-            </Route>
-            <Route exact path="/videos/:videoId">
-              <Video />
-            </Route>
-          </div>
-          <Footer />
         </div>
+        <Footer />
       </Router>
     </ApolloProvider>
   );

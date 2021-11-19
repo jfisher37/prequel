@@ -3,5 +3,17 @@
     "name": "Jon Doe",
     "email": "jondoe@gmail.com",
     "password": "password01"
+  },
+
+  {
+    "name": "lamperouge1218",
+    "email": "philbohn1791@gmail.com",
+    "password": "password02"
+  },
+
+  {
+    "name": "balsawood",
+    "email": "test@test.test",
+    "password": "password03"
   }
 ]

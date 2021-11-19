@@ -16,6 +16,8 @@ const typeDefs = gql`
     dislikes: Int
     views: Int
     publishDate: String
+    videoAuthor: String!
+    genres: [Genre]
   }
 
   type Genre {
@@ -39,10 +41,11 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addVideo(title: String!, cloudURL: String!): Video
+    addVideo(title: String!, cloudURL: String!, videoAuthor: String!): Video
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     videoMetrics(videoId: String, likes: Int, dislikes: Int, views: Int): Video
+    removeVideo(videoId: ID!): Video
   }
 `;
 
