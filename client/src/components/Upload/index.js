@@ -43,6 +43,7 @@ function CloudinaryUploadWidget() {
         },
       });
       setTitle("");
+      window.location.assign('/');
     } catch (err) {
       console.error(err);
     }

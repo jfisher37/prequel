@@ -41,9 +41,6 @@ const VideoList = ({ videos }) => {
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
               </Link>
-              <div className="roboto-font">
-                <Link to={`/videosCrud/${video._id}`}>Click for CRUD</Link>
-              </div>
             </Card.Body>
           </Card>
         ))}

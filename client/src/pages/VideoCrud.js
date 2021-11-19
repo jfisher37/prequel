@@ -5,8 +5,6 @@ import Button from "react-bootstrap/Button";
 
 import Container from "react-bootstrap/Container";
 
-// import Video from '../components/VideoList';
-
 import Auth from "../utils/auth";
 import { QUERY_SINGLE_VIDEO } from "../utils/queries";
 import { REMOVE_VIDEO } from "../utils/mutations";
@@ -24,27 +22,34 @@ const VideoCrud = () => {
 
   const video = data?.video || {};
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
-  async function deleteFunction(videoId) {
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    async function deleteFunction(videoId) {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const {data} = await deleteVideo({
+                variables : {videoId}
+            })
+        } catch (err) {
+            console.log(err)
+        }
 
     if (!token) {
       return false;
     }
-    try {
-      const { data } = await deleteVideo({
-        variables: { videoId },
-      });
-    } catch (err) {
-      console.log(err);
-    }
+
   }
 
   const deleteClick = () => {
     deleteFunction(videoId);
+    window.location.assign('/');
   };
 
   return (

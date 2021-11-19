@@ -18,7 +18,6 @@ import Login from "./pages/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CloudinaryUploadWidget from "./components/Upload";
-import SingleVideo from "./pages/Video"
 import Profile from "./pages/Profile"
 
 const httpLink = createHttpLink({
