@@ -6,7 +6,7 @@
   --gold: #c48600;
   --red: #812301;
   --maroon: #301408;
-  --silver: #C0C0C0;
+  --silver: #c0c0c0;
 }
 
 /* -----Login----- */
@@ -170,6 +170,8 @@ nav {
 .upload-padding-top {
   padding-top: 15px;
 }
+
+/* -----Video Card Stylings-----*/
 
 .video-title {
   font-family: "Montserrat", sans-serif;
