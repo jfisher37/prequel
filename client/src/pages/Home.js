@@ -2,6 +2,10 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import CloudinaryUploadWidget from "../components/Upload";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 // import VideoList from '../components/VideoList';
 import {
   Image,
@@ -18,17 +22,17 @@ const Home = () => {
   const videos = data?.videos || [];
 
   return (
-    <main>
-      <div className="flex-row justify-center">
-        <div className="col-12 col-md-10 my-3">
+    <Container>
+      <Row>
+        <Col>
           {loading ? (
             <div>Loading...</div>
           ) : (
             <VideoList videos={videos} title="HEADER TEXT" />
           )}
-        </div>
-      </div>
-    </main>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

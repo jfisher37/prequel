@@ -1,9 +1,9 @@
 :root {
   --navyBlue: #000342;
   --dustBlue: #2f484d;
-  --LdustBlue: #43676E;
+  --LdustBlue: #43676e;
   --green: #4a4317;
-  --gold: #C48600;
+  --gold: #c48600;
   --red: #812301;
   --maroon: #301408;
 }
@@ -84,11 +84,11 @@ footer {
 
 /* -----Navbar----- */
 nav {
-  background-color: var(--navyBlue)
+  background-color: var(--navyBlue);
 }
 
 .navbar-brand {
-  font-family: 'Limelight', cursive;
+  font-family: "Limelight", cursive;
   font-size: 3.25rem;
 }
 
@@ -103,12 +103,13 @@ nav {
   }
 }
 
-.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
   color: var(--gold);
 }
 
 .nav-item {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 900;
 }
 
