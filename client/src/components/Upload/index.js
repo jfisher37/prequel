@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
+import Row from "react-bootstrap/Row";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container'
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import ADD_VIDEO from "../../utils/mutations";
-import Button from "react-bootstrap/Button";
 import Auth from "../../utils/auth";
 
 function CloudinaryUploadWidget() {
@@ -46,19 +48,24 @@ function CloudinaryUploadWidget() {
     }
   };
   return (
-    <div>
-      <div>
+    <Container className="upload-container justify-content-md-center">
+      <Row className="justify-content-md-center upload-padding-top">
+        <Form.Label>Upload Your Video</Form.Label>
+      </Row>
+      <Row className="justify-content-md-center">
         <button
           id="upload_widget"
           onClick={uploadClick}
-          className="cloudinary-button"
+          className="cloudinary-button button6"
         >
           Upload
         </button>
-        <Form>
+      </Row>
+      <Form>
+        <Row className="justify-content-md-center">
           <Col sm={5}>
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Video Title</Form.Label>
+            <Form.Group as={Col} className="upload-label" controlId="formGridEmail">
+              <Form.Label  >Video Title</Form.Label>
               <Form.Control
                 onChange={(event) => {
                   setTitle(event.target.value);
@@ -67,16 +74,16 @@ function CloudinaryUploadWidget() {
               />
             </Form.Group>
           </Col>
-          <Button variant="primary" type="submit" onClick={handleFormSubmit}>
+        </Row>
+        <Row className="justify-content-md-center">
+          <button className='button6' type="submit" onClick={handleFormSubmit}>
             Submit
-          </Button>
-        </Form>
-      </div>
-      <p>
-        You need to be logged in to upload a video. Please{" "}
-        <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-      </p>
-    </div>
+          </button>
+        </Row>
+
+      </Form>
+
+    </Container>
   );
 }
 
