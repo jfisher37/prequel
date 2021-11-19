@@ -5,6 +5,9 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import Row from "react-bootstrap/Row";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container'
 
 import Auth from "../utils/auth";
 
@@ -43,51 +46,55 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{" "}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <Form onSubmit={handleFormSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Full Name</Form.Label>
-                  <Form.Control name="name" type="name" placeholder="First Name, Last Name" value={formState.name}
+    <div>
+      <h1 className="login-header">Signup</h1>
+      <Container className="loginForm">
+        <Row className="justify-content-md-center padding-login">
+          {data ? (
+            <p>
+              Success!You may now head{" "}
+              <Link to="/">back to the homepage.</Link>
+            </p>
+          ) : (
+            <Form onSubmit={handleFormSubmit}>
+              <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                <Form.Label column sm={4}>Name</Form.Label>
+                <Col sm={10}>
+                  <Form.Control name="name" type="name" placeholder="First, Last" value={formState.name}
                     onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                <Form.Label column sm={4}>Email</Form.Label>
+                <Col sm={10}>
                   <Form.Control name="email" type="email" placeholder="Enter email" value={formState.email}
                     onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                <Form.Label column sm={4}>Password</Form.Label>
+                <Col sm={10}>
                   <Form.Control name="password" type="password" placeholder="Password" value={formState.password}
                     onChange={handleChange} />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                  Signup
-                </Button>
-              </Form>
-            )}
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Col>
+                  <button type="submit" className="button6">Sign up</button>
+                </Col>
+              </Form.Group>
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+            </Form>
+          )}
+          {error && (
+            <div className="my-3 p-3 text-white">
+              {error.message}
+            </div>
+          )}
+        </Row>
+      </Container>
+    </div >
 
-
-
-    </main>
   );
 };
 
