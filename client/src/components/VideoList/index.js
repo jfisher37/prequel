@@ -27,12 +27,12 @@ const VideoList = ({ videos }) => {
     <div>
       {videos &&
         videos.map((video) => (
-          <Card className="text-center my-3">
+          <Card className="text-center my-3" key={video._id}>
             <Card.Header as="h2">{video.title}</Card.Header>
             <Card.Body>
               <Card.Title>{video.publishDate}</Card.Title>
               <div>Posted by: {video.videoAuthor}</div>
-              <Link to={`/videos/${video._id}`} state={inc} onClick={makeIncTrue}>
+              <Link to={`/videos/${video._id}`} onClick={makeIncTrue}>
                 <video style={{ width: 660, height: "auto" }}>
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
