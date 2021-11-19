@@ -14,8 +14,8 @@ const SingleVideo = () => {
 
   const location = useLocation();
 
-//   let { inc } = location.state;
-  
+  //   let { inc } = location.state;
+
   console.log(location);
 
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);

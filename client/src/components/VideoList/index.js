@@ -19,9 +19,9 @@ const VideoList = ({ videos }) => {
   let inc = false;
 
   const makeIncTrue = () => {
-    console.log("TRUE!!!!")
-     inc = true;
-  }
+    console.log("TRUE!!!!");
+    inc = true;
+  };
 
   return (
     <div>

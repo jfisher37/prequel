@@ -12,15 +12,15 @@ import { REMOVE_VIDEO } from "../utils/mutations";
 import Card from "react-bootstrap/Card";
 
 const VideoCrud = () => {
-    const { videoId } = useParams();
+  const { videoId } = useParams();
 
-    const { loading, data } = useQuery(QUERY_SINGLE_VIDEO, {
-        variables: { videoId: videoId },
-    });
+  const { loading, data } = useQuery(QUERY_SINGLE_VIDEO, {
+    variables: { videoId: videoId },
+  });
 
-    const [deleteVideo, { error }] = useMutation(REMOVE_VIDEO);
+  const [deleteVideo, { error }] = useMutation(REMOVE_VIDEO);
 
-    const video = data?.video || {};
+  const video = data?.video || {};
 
     if (loading) {
         return <div>Loading...</div>;
@@ -41,35 +41,39 @@ const VideoCrud = () => {
             console.log(err)
         }
 
+    if (!token) {
+      return false;
     }
 
-    const deleteClick = () => {
-        deleteFunction(videoId)
-        window.location.assign('/');
-    }
-  
+  }
+
+  const deleteClick = () => {
+    deleteFunction(videoId);
+    window.location.assign('/');
+  };
 
   return (
     <Container>
       <Card className="text-center my-3">
-        <Card.Header as="h2">{video.title}</Card.Header>
-        <Card.Body>
-          <Card.Title>{video.publishDate}</Card.Title>
+        <Card.Header as="h2" className="video-title">
+          {video.title}
+        </Card.Header>
+        <Card.Body className="video-body">
+          <Card.Title className="roboto-font">{video.publishDate}</Card.Title>
           <video style={{ width: 660, height: "auto" }} controls>
             <source src={video.cloudURL} type="video/mp4" />
           </video>
+          <div>
+            <Button
+              className="mb-3 button6"
+              variant="primary"
+              type="submit"
+              onClick={deleteClick}
+            >
+              Delete
+            </Button>
+          </div>
         </Card.Body>
-        <div>
-          <Button
-            className="mb-3"
-            variant="primary"
-            type="submit"
-            onClick={deleteClick}
-            
-          >
-            Delete
-          </Button>
-        </div>
       </Card>
     </Container>
   );
