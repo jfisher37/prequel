@@ -35,6 +35,7 @@ label {
   font-family: 'Montserrat', sans-serif;
 }
 
+/* https://fdossena.com/?p=html5cool/buttons/i.frag */
 button.button6 {
   display: inline-block;
   padding: 0.7em 1.4em;
@@ -46,7 +47,7 @@ button.button6 {
   text-transform: uppercase;
   font-weight: 400;
   color: #FFFFFF;
-  background-color: var(--dustBlue);
+  background-color: var(--gold);
   box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
   text-align: center;
   position: relative;
@@ -146,4 +147,22 @@ nav {
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
   color: var(--LdustBlue);
+}
+
+/* -----Upload Page----- */
+
+.upload-container {
+  margin-top: 15px;
+  padding-bottom: 10px;
+  background-color: var(--LdustBlue);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.upload-label {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.upload-padding-top {
+  padding-top: 15px;
 }
