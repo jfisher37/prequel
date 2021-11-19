@@ -11,9 +11,7 @@ import Card from "react-bootstrap/Card";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
-  console.log ("HI")
 
-  console.log(videoId);
 
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
 
@@ -26,16 +24,15 @@ const SingleVideo = () => {
   } else {
 
 
-  console.log(data);
   const video = data?.video || {};
-  console.log(video.views);
+  
 
   const viewLimit = video.views + 2;
 
   const updateMetrics = async () => {
-  console.log(video.views);
+  
   const newView = video.views + 1;
-  console.log(newView);
+
 
     try {
       await videoMetrics({
@@ -54,14 +51,13 @@ const SingleVideo = () => {
     if (viewLimit > video.views){
      updateMetrics();
     }
-  console.log(video.views)
 
 
 
   return (
     <div>
     <Container>
-      <Card className="text-center">
+      <Card className="text-center my-3">
         <Card.Header as="h2">{video.title}</Card.Header>
         <Card.Body>
           <Card.Title>{video.publishDate}</Card.Title>
