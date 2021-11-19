@@ -33,6 +33,7 @@ const typeDefs = gql`
   type Query {
    videos: [Video]!
    video(videoId: ID!): Video
+   myVideos(videoAuthor: String!): [Video]
    users: [User]
    user(_id: ID!): User
    genres: [Genre]

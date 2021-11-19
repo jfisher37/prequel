@@ -6,12 +6,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 // import Video from '../components/VideoList';
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext,
-} from "cloudinary-react";
+
 import Auth from "../utils/auth";
 import { QUERY_SINGLE_VIDEO } from "../utils/queries";
 import { REMOVE_VIDEO } from "../utils/mutations";
@@ -25,13 +20,13 @@ const VideoCrud = () => {
     variables: { videoId: videoId },
   });
 
+  const [deleteVideo, { error }] = useMutation(REMOVE_VIDEO);
+
   const video = data?.video || {};
 
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  // const [deleteVideo, { error }] = useMutation(REMOVE_VIDEO);
 
   async function deleteFunction(videoId) {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -39,15 +34,18 @@ const VideoCrud = () => {
     if (!token) {
       return false;
     }
-
-    // try {
-    //     const {data} = await deleteVideo({
-    //         variables : {videoId}
-    //     })
-    // } catch (err) {
-    //     console.log(err)
-    // }
+    try {
+      const { data } = await deleteVideo({
+        variables: { videoId },
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
+
+  const deleteClick = () => {
+    deleteFunction(videoId);
+  };
 
   return (
     <Container>
@@ -71,6 +69,16 @@ const VideoCrud = () => {
             </Button>
           </div>
         </Card.Body>
+        <div>
+          <Button
+            className="mb-3"
+            variant="primary"
+            type="submit"
+            onClick={deleteClick}
+          >
+            Delete
+          </Button>
+        </div>
       </Card>
     </Container>
   );

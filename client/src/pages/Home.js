@@ -1,6 +1,5 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import CloudinaryUploadWidget from "../components/Upload";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
