@@ -5,13 +5,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-// import VideoList from '../components/VideoList';
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext,
-} from "cloudinary-react";
 import { QUERY_VIDEOS } from "../utils/queries";
 
 import VideoList from "../components/VideoList";
