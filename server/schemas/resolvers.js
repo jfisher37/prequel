@@ -83,12 +83,10 @@ const resolvers = {
       return { token, user };
     },
 
-    videoMetrics: async (parent, {videoId, likes, dislikes, views}) => {
+    videoMetrics: async (parent, {videoId, views}) => {
       const video = await Video.findOneAndUpdate(
               { _id: videoId },
               {
-                likes: likes,
-                dislikes: dislikes,
                 views: views
               },
               {

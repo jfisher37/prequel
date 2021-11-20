@@ -33,10 +33,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const VIDEO_METRICS = gql`
-  mutation videoMetrics($videoId: String, $likes: Int, $dislikes: Int, $views: Int) {
-    videoMetrics(videoId: $videoId, likes: $likes, dislikes: $dislikes, views: $views) {
-      likes
-      dislikes
+  mutation videoMetrics($videoId: String, $views: Int) {
+    videoMetrics(videoId: $videoId, views: $views) {
       views
     }
   }
