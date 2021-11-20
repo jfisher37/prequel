@@ -46,6 +46,8 @@ const typeDefs = gql`
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     videoMetrics(videoId: String, likes: Int, dislikes: Int, views: Int): Video
+    updateLikes(videoId: String, likes: Int): Video
+    updateDislikes(videoId: String, dislikes: Int): Video
     removeVideo(videoId: ID!): Video
   }
 `;
