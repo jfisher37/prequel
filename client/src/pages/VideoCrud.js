@@ -63,6 +63,7 @@ const VideoCrud = () => {
           <video style={{ width: 660, height: "auto" }} controls>
             <source src={video.cloudURL} type="video/mp4" />
           </video>
+          <h2>Are you sure you want to delete your video? This action cannot be undone</h2>
           <div>
             <Button
               className="mb-3 button6"
