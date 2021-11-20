@@ -45,20 +45,21 @@ const SingleVideo = () => {
     };
 
     const isLiked = () => {
-      console.log(video.likes)
+     const newLikes = (video.likes + 1)
       updateLikes({
         variables: {
           videoId: videoId,
-          likes: 0,
+          likes: newLikes,
         }
       });
     }
 
     const isDisliked = () => {
+      const newDislikes = (video.dislikes + 1)
       updateDislikes({
         variables: {
           videoId: videoId,
-          dislikes: 0,
+          dislikes: newDislikes,
         }
       });
     }
