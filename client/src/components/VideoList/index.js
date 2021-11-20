@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 
@@ -16,9 +16,9 @@ import { VIDEO_METRICS } from "../../utils/mutations";
 
 // Return brings back all videos from the DB
 
-const VideoList = ({ videos }) => {
+const VideoList = ({videos}) => {
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
-  
+
   if (!videos.length) {
     return <h3>No Videos Yet!</h3>;
   }
