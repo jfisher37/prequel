@@ -28,7 +28,7 @@ return (
        <Card.Header as="h2" className="video-title">{video.title}</Card.Header>
        <Card.Body className="video-body">
          <Card.Title className="roboto-font">{video.publishDate}</Card.Title>
-         <div className="roboto-font">Posted by: {video.videoAuthor}</div>
+         <div className="roboto-font">Posted by: {Auth.getProfile().data.name}</div>
          <Link to={`/videos/${video._id}`}>
            <video style={{ width: 660, height: "auto" }}>
              <source src={video.cloudURL} type="video/mp4" />
