@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 
@@ -16,7 +16,7 @@ import { VIDEO_METRICS } from "../../utils/mutations";
 
 // Return brings back all videos from the DB
 
-const VideoList = ({videos}) => {
+const VideoList = ({ videos }) => {
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
 
   if (!videos.length) {
@@ -24,11 +24,11 @@ const VideoList = ({videos}) => {
   }
   console.log(videos);
 
- 
+
 
 
   const updateMetrics = async (videoId, videoViews) => {
-    const newView = (videoViews +.5);
+    const newView = (videoViews + .5);
     console.log(newView);
 
     try {
@@ -59,11 +59,12 @@ const VideoList = ({videos}) => {
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
               </Link>
-            
-            </Card.Body>
-          </Card>
-        ))}
-    </div>
+
+            </Card.Body >
+          </Card >
+        ))
+      }
+    </div >
   );
 };
 
