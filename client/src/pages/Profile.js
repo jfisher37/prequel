@@ -36,7 +36,7 @@ const Profile = () => {
                 </video>
               </Link>
               <div>
-                <Link to={`/videosCrud/${video._id}`}>Click for CRUD</Link>
+                <Link to={`/videosCrud/${video._id}`}>Click for Delete</Link>
               </div>
             </Card.Body>
           </Card>
