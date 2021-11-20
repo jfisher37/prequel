@@ -18,7 +18,7 @@ const SingleVideo = () => {
     variables: { videoId: videoId },
   });
   
-
+  const [disable, setDisable] = React.useState(false);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -59,6 +59,7 @@ const SingleVideo = () => {
 
     const clickLike = () => {
       isLiked()
+      setDisable(true)
     }
 
 
@@ -77,6 +78,7 @@ const SingleVideo = () => {
 
     const clickDislike = () => {
       isDisliked()
+      setDisable(true)
     }
 
     updateMetrics();
@@ -93,8 +95,8 @@ const SingleVideo = () => {
                 <source src={video.cloudURL} type="video/mp4" />
               </video>
               <p>Likes: {video.likes} Dislikes: {video.dislikes}</p>
-              <p><button onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
-                <button onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>
+              <p><button disabled={disable} onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
+                <button disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>
             </Card.Body>
           </Card>
         </Container>
