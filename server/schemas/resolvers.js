@@ -16,7 +16,7 @@ const resolvers = {
 
     // Query for all videos
     videos: async () => {
-      return await Video.find();
+      return await Video.find().sort({publishDate: -1});
     },
 
     // Query for one video
