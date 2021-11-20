@@ -8,8 +8,35 @@
   --maroon: #301408;
 }
 
-/* -----Login----- */
+body {
+  background-color: var(--dustBlue);
+}
 
+/* -----Footer Positioning----- */
+#root {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--dustBlue);
+}
+
+.footer-positioning {
+  padding-bottom: 2.5rem;
+}
+
+footer {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  height: 2.5rem;
+  background-color: var(--dustBlue);
+}
+
+.footer-font {
+  color: var(--gold);
+}
+
+/* -----Login----- */
 h1 {
   text-align: center;
 }
@@ -65,25 +92,6 @@ button.button6:active {
   }
 }
 
-/* -----Footer Positioning----- */
-#root {
-  position: relative;
-  min-height: 100vh;
-}
-
-.footer-positioning {
-  padding-bottom: 2.5rem;
-  background-color: var(--dustBlue);
-}
-
-footer {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  height: 2.5rem;
-}
-
 /* -----Navbar----- */
 nav {
   background-color: var(--navyBlue);
@@ -116,7 +124,6 @@ nav {
 }
 
 /* https://codingyaar.com/responsive-bootstrap-navbar-with-logo-centered-above-navbar/ */
-
 .navbar .navbar-nav .nav-link {
   color: var(--gold);
   font-size: 1.1em;
@@ -152,7 +159,6 @@ nav {
 }
 
 /* -----Upload Page----- */
-
 .upload-container {
   margin-top: 15px;
   padding-bottom: 10px;
