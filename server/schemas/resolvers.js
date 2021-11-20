@@ -97,6 +97,32 @@ const resolvers = {
             );
       return video;
     },
+
+    updateLikes: async (parent, {videoId, likes}) => {
+      const video = await Video.findOneAndUpdate(
+              { _id: videoId },
+              {
+                likes: likes,
+              },
+              {
+                new: true,
+              }
+            );
+      return video;
+    },
+
+    updateDislikes: async (parent, {videoId, dislikes}) => {
+      const video = await Video.findOneAndUpdate(
+              { _id: videoId },
+              {
+                dislikes: dislikes,
+              },
+              {
+                new: true,
+              }
+            );
+      return video;
+    },
     
     removeVideo: async (parent, { videoId }, context) => {
       if (context.user) {
