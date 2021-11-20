@@ -18,7 +18,7 @@ const SingleVideo = () => {
     variables: { videoId: videoId },
   });
   
-  const [disable, setDisable] = React.useState(false);
+  const [disable, setDisable] = useState(false);
 
   if (loading) {
     return <div>Loading...</div>;
