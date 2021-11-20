@@ -41,6 +41,23 @@ export const VIDEO_METRICS = gql`
     }
   }
 `;
+
+export const UPDATE_LIKES = gql`
+  mutation updateLikes($videoId: String, $likes: Int) {
+    updateLikes(videoId: $videoId, likes: $likes) {
+      likes
+    }
+  }
+`;
+
+export const UPDATE_DISLIKES = gql`
+  mutation updateDislikes($videoId: String, $dislikes: Int) {
+    updateDislikes(videoId: $videoId, dislikes: $dislikes) {
+      dislikes
+    }
+  }
+`;
+
 export const REMOVE_VIDEO = gql`
   mutation removeVideo($videoId: ID!) {
     removeVideo(videoId: $videoId) {
