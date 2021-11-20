@@ -1,18 +1,10 @@
-import React, { useState } from "react";
-import { useMutation, useQuery } from "@apollo/client";
-import CloudinaryUploadWidget from "../components/Upload";
+import React from "react";
+import { useQuery } from "@apollo/client";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-// import VideoList from '../components/VideoList';
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext,
-} from "cloudinary-react";
 import { QUERY_VIDEOS } from "../utils/queries";
 
 import VideoList from "../components/VideoList";

@@ -23,9 +23,10 @@ const SingleVideo = () => {
     return <div>Loading...</div>;
   } else {
     const video = data?.video || {};
-    const viewLimit = video.views + 2;
+
     const updateMetrics = async () => {
       const newView = video.views + 1;
+
       try {
         await videoMetrics({
           variables: {
@@ -40,17 +41,15 @@ const SingleVideo = () => {
       }
     };
 
-    if (viewLimit > video.views) {
-      updateMetrics();
-    }
-    console.log(video);
+    updateMetrics();
+
     return (
       <div>
         <Container>
           <Card className="text-center my-3">
             <Card.Header as="h2">{video.title}</Card.Header>
             <Card.Body>
-              <Card.Title>Posted on: {video.publishDate}</Card.Title>
+              <Card.Title>{video.publishDate}</Card.Title>
               <Card.Title>Views: {video.views}</Card.Title>
               <video style={{ width: 660, height: "auto" }} controls>
                 <source src={video.cloudURL} type="video/mp4" />

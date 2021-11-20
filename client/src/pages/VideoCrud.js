@@ -5,13 +5,6 @@ import Button from "react-bootstrap/Button";
 
 import Container from "react-bootstrap/Container";
 
-// import Video from '../components/VideoList';
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext,
-} from "cloudinary-react";
 import Auth from "../utils/auth";
 import { QUERY_SINGLE_VIDEO } from "../utils/queries";
 import { REMOVE_VIDEO } from "../utils/mutations";
@@ -25,50 +18,63 @@ const VideoCrud = () => {
     variables: { videoId: videoId },
   });
 
+  const [deleteVideo, { error }] = useMutation(REMOVE_VIDEO);
+
   const video = data?.video || {};
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
-  // const [deleteVideo, { error }] = useMutation(REMOVE_VIDEO);
+    async function deleteFunction(videoId) {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-  async function deleteFunction(videoId) {
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const {data} = await deleteVideo({
+                variables : {videoId}
+            })
+        } catch (err) {
+            console.log(err)
+        }
 
     if (!token) {
       return false;
     }
 
-    // try {
-    //     const {data} = await deleteVideo({
-    //         variables : {videoId}
-    //     })
-    // } catch (err) {
-    //     console.log(err)
-    // }
   }
+
+  const deleteClick = () => {
+    deleteFunction(videoId);
+    window.location.assign('/');
+  };
 
   return (
     <Container>
       <Card className="text-center my-3">
-        <Card.Header as="h2">{video.title}</Card.Header>
-        <Card.Body>
-          <Card.Title>{video.publishDate}</Card.Title>
+        <Card.Header as="h2" className="video-title">
+          {video.title}
+        </Card.Header>
+        <Card.Body className="video-body">
+          <Card.Title className="roboto-font">{video.publishDate}</Card.Title>
           <video style={{ width: 660, height: "auto" }} controls>
             <source src={video.cloudURL} type="video/mp4" />
           </video>
+          <h2>Are you sure you want to delete your video? This action cannot be undone</h2>
+          <div>
+            <Button
+              className="mb-3 button6"
+              variant="primary"
+              type="submit"
+              onClick={deleteClick}
+            >
+              Delete
+            </Button>
+          </div>
         </Card.Body>
-        <div>
-          <Button
-            className="mb-3"
-            variant="primary"
-            type="submit"
-            onClick={deleteFunction}
-          >
-            Delete
-          </Button>
-        </div>
       </Card>
     </Container>
   );

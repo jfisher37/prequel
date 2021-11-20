@@ -16,12 +16,16 @@ const resolvers = {
 
     // Query for all videos
     videos: async () => {
-      return await Video.find();
+      return await Video.find().sort({publishDate: -1});
     },
 
     // Query for one video
     video: async (parent, { videoId }) => {
       return await Video.findById({ _id: videoId });
+    },
+
+    myVideos: async (parent, { videoAuthor }) => {
+      return await Video.find({videoAuthor: videoAuthor});
     },
 
     // Query for all genres
