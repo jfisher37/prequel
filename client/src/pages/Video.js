@@ -16,13 +16,19 @@ const SingleVideo = () => {
     variables: { videoId: videoId },
   });
 
+  const [disable, setDisable] = useState(false);
+
   if (loading) {
     return <div>Loading...</div>;
   } else {
     const video = data?.video || {};
 
+
+
     const updateMetrics = () => {
+
       const newView = (video.views + 1);
+
       try {
         videoMetrics({
           variables: {
@@ -35,24 +41,41 @@ const SingleVideo = () => {
       }
     };
 
-    const isLiked = () => {
-      const newLikes = (video.likes + 1)
-      updateLikes({
-        variables: {
-          videoId: videoId,
-          likes: newLikes,
-        }
-      });
+    const isLiked = async () => {
+
+      try {
+        await updateLikes({
+          variables: {
+            videoId: videoId,
+          },
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
 
-    const isDisliked = () => {
-      const newDislikes = (video.dislikes + 1)
-      updateDislikes({
-        variables: {
-          videoId: videoId,
-          dislikes: newDislikes,
-        }
-      });
+    const clickLike = () => {
+      isLiked()
+      setDisable(true)
+    }
+
+
+    const isDisliked = async () => {
+
+      try {
+        await updateDislikes({
+          variables: {
+            videoId: videoId,
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    const clickDislike = () => {
+      isDisliked()
+      setDisable(true)
     }
 
     updateMetrics();
@@ -69,8 +92,8 @@ const SingleVideo = () => {
                 <source src={video.cloudURL} type="video/mp4" />
               </video>
               <p>Likes: {video.likes} Dislikes: {video.dislikes}</p>
-              <p><button onClick={isLiked}><i class="fas fa-thumbs-up"></i></button>
-                <button onClick={isDisliked}><i class="fas fa-thumbs-down"></i></button></p>
+              <p><button disabled={disable} onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
+                <button disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>
             </Card.Body>
           </Card>
         </Container>
