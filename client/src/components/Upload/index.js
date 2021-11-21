@@ -24,7 +24,7 @@ function CloudinaryUploadWidget() {
       if (!error && result && result.event === "success") { // If video upload is a success, its logged in console
         console.log("Done! Here is the video info: ", result.info);
         // When upload is complete, cloudinary gives url for video
-        setURL(result.info.secure_url); // Set URL state for GraphQL database, adds url to databse
+        setURL(result.info.secure_url); // Set URL state for GraphQL database, adds url to database
       }
     }
   );
