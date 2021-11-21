@@ -9,8 +9,15 @@ import { VIDEO_METRICS, UPDATE_LIKES, UPDATE_DISLIKES } from "../utils/mutations
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 
+import Auth from "../utils/auth";
+
 const SingleVideo = () => {
   const { videoId } = useParams();
+
+  let level = -1;
+  if (Auth.getProfile()){
+  level = Auth.getProfile().data.level};
+  console.log(level);
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
   const [updateLikes, { err }] = useMutation(UPDATE_LIKES);
   const [updateDislikes, { erro }] = useMutation(UPDATE_DISLIKES);
@@ -20,10 +27,20 @@ const SingleVideo = () => {
   
   const [disable, setDisable] = useState(false);
 
+
   if (loading) {
     return <div>Loading...</div>;
   } else {
     const video = data?.video || {};
+
+
+    
+    let viewsTag = "";
+    if (level > 0){
+    viewsTag = `Views: ${video.views}`
+  } else {viewsTag = ""};
+
+  console.log(viewsTag);
 
 
 
@@ -90,7 +107,7 @@ const SingleVideo = () => {
             <Card.Header as="h2">{video.title}</Card.Header>
             <Card.Body>
               <Card.Title>{video.publishDate}</Card.Title>
-              <Card.Title>Views: {video.views}</Card.Title>
+              <Card.Title>{viewsTag}</Card.Title>
               <video style={{ width: 660, height: "auto" }} controls>
                 <source src={video.cloudURL} type="video/mp4" />
               </video>

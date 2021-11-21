@@ -18,6 +18,14 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+
+  // level 0: viewer, level 1: content creator, level 2: industry pro, level 3: admin.
+
+  level: {
+    type: Number,
+    default: 0,
+  },
+
   videos: [
     {
       type: Schema.Types.ObjectId,
