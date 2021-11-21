@@ -10,6 +10,10 @@ import { QUERY_SINGLE_VIDEO } from "../../utils/queries";
 
 const Header = () => {
 
+  let level = -1;
+  if (Auth.getProfile()){
+  level = Auth.getProfile().data.level};
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -24,7 +28,7 @@ const Header = () => {
 
           {Auth.loggedIn() ? (
             <>
-              <Link className="nav-item nav-link" to="/upload"> Upload</Link>
+              {level === 1 || level === 3 ? (<Link className="nav-item nav-link" to="/upload"> Upload</Link>): ("")}
               <Link className="nav-item nav-link" to="/me">
                 View My Profile
               </Link>
