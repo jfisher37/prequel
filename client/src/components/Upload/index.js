@@ -31,7 +31,6 @@ function CloudinaryUploadWidget() {
   const uploadClick = () => {
     myWidget.open();
   };
-  console.log(Auth.getProfile().data.name)
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {

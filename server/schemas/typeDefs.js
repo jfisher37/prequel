@@ -6,6 +6,7 @@ const typeDefs = gql`
     name: String!
     email: String!
     password: String!
+    level: Int
   }
 
   type Video {
@@ -43,7 +44,7 @@ const typeDefs = gql`
 
   type Mutation {
     addVideo(title: String!, cloudURL: String!, videoAuthor: String!): Video
-    addUser(name: String!, email: String!, password: String!): Auth
+    addUser(name: String!, email: String!, password: String!, level: Int): Auth
     login(email: String!, password: String!): Auth
     videoMetrics(videoId: String, views: Int): Video
     updateLikes(videoId: String, likes: Int): Video
