@@ -5,8 +5,9 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Auth from "../utils/auth";
 import { QUERY_MY_VIDEOS } from "../utils/queries";
-
+// Profile page for user to see only their videos
 const Profile = () => {
+  // Queries user who is logged in videos
   const { loading, data } = useQuery(QUERY_MY_VIDEOS, {
     variables: { videoAuthor: Auth.getProfile().data.name },
   });
@@ -30,7 +31,6 @@ const Profile = () => {
               <Card.Title className="roboto-font">
                 <i class="fas fa-calendar-alt"></i> {video.publishDate}
               </Card.Title>
-
               <Link to={`/videos/${video._id}`}>
                 <video style={{ width: 660, height: "auto" }}>
                   <source src={video.cloudURL} type="video/mp4" />
@@ -40,7 +40,6 @@ const Profile = () => {
               <div>
                 <Link className="delete-trash" to={`/videosCrud/${video._id}`}><i class="fas fa-trash"></i></Link>
               </div>
-
             </Card.Body>
           </Card>
         </Container>

@@ -6,12 +6,11 @@ import { QUERY_SINGLE_VIDEO } from "../utils/queries";
 import { VIDEO_METRICS, UPDATE_LIKES, UPDATE_DISLIKES } from "../utils/mutations";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-
 import Auth from "../utils/auth";
-
+// Single video page
 const SingleVideo = () => {
   const { videoId } = useParams();
-
+  // if user is not logged in, level is -1 which restricts certain privileges 
   let level = -1;
   if (Auth.getProfile()) {
     level = Auth.getProfile().data.level
@@ -19,25 +18,22 @@ const SingleVideo = () => {
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
   const [updateLikes, { err }] = useMutation(UPDATE_LIKES);
   const [updateDislikes, { erro }] = useMutation(UPDATE_DISLIKES);
+  // Queries singe video based on params video id
   const { loading, data } = useQuery(QUERY_SINGLE_VIDEO, {
     variables: { videoId: videoId },
   });
 
   const [disable, setDisable] = useState(false);
 
-
   if (loading) {
     return <div>Loading...</div>;
   } else {
     const video = data?.video || {};
-
-
-
     let viewsTag = "";
     if (level > 0) {
       viewsTag = `Views: ${video.views}`
     } else { viewsTag = "" };
-
+    // Tracks views based on page reload
     const updateMetrics = () => {
       const newView = (video.views + 1);
       try {
@@ -51,7 +47,7 @@ const SingleVideo = () => {
         console.log(err);
       }
     };
-
+    // Like button functionality 
     const isLiked = async () => {
       try {
         await updateLikes({
@@ -63,12 +59,12 @@ const SingleVideo = () => {
         console.error(err);
       }
     }
-
+    // Calls to increase likes on click of like button
     const clickLike = () => {
       isLiked()
       setDisable(true)
     }
-
+    // Dislike button functionality 
     const isDisliked = async () => {
       try {
         await updateDislikes({
@@ -80,12 +76,12 @@ const SingleVideo = () => {
         console.error(err);
       }
     }
-
+    // Calls to increase dislikes on click of dislike button
     const clickDislike = () => {
       isDisliked()
       setDisable(true)
     }
-
+    // updates views on page reload
     updateMetrics();
 
     return (
@@ -101,7 +97,7 @@ const SingleVideo = () => {
               </video>
               <p className="roboto-font">Likes: {video.likes}</p><p className="roboto-font"> Dislikes: {video.dislikes}</p>
               {level >= 0 ? (<p><button className='button6' disabled={disable} onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
-                <button className='button6' disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>): ("")}
+                <button className='button6' disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>) : ("")}
             </Card.Body >
           </Card >
         </Container >
