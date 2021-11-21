@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button';
 import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container'
-
 import Auth from "../utils/auth";
 
 const Signup = () => {
@@ -18,27 +15,21 @@ const Signup = () => {
     password: "",
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
-
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
     });
   };
-
-  // submit form
+  // Submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-
     try {
       const { data } = await addUser({
         variables: { ...formState },
       });
-      // console.log(data);
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
