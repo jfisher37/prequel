@@ -23,6 +23,7 @@ function CloudinaryUploadWidget() {
     (error, result) => {
       if (!error && result && result.event === "success") {
         console.log("Done! Here is the video info: ", result.info);
+        console.log(result)
         setURL(result.info.secure_url);
       }
     }
