@@ -150,6 +150,10 @@ nav {
   }
 }
 
+video {
+  max-width: 80%;
+}
+
 .navbar .navbar-nav {
   margin-top: 0.5em;
   border-top: 2px solid var(--dustBlue);
