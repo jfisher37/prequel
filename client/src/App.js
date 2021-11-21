@@ -7,9 +7,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
 import './index.css';
-
 import Home from "./pages/Home";
 import VideoCrud from "./pages/VideoCrud"
 import Video from "./pages/Video";
@@ -19,7 +17,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CloudinaryUploadWidget from "./components/Upload";
 import Profile from "./pages/Profile"
-
+// Query and mutate models on localhost:3001/graphql
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -63,11 +61,11 @@ function App() {
             <Video />
           </Route>
           <Route exact path="/videosCrud/:videoId">
-              <VideoCrud />
-            </Route>
-            <Route exact path="/me">
-              <Profile />
-            </Route>
+            <VideoCrud />
+          </Route>
+          <Route exact path="/me">
+            <Profile />
+          </Route>
         </div>
         <Footer />
       </Router>

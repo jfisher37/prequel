@@ -8,45 +8,48 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import ADD_VIDEO from "../../utils/mutations";
 import Auth from "../../utils/auth";
-
+// Upload page using cloudinary
 function CloudinaryUploadWidget() {
   const [title, setTitle] = useState("");
   const [URL, setURL] = useState("");
   const [author, setAuthor] = useState("");
   const [addVideo, { error }] = useMutation(ADD_VIDEO);
-
+  // Upload widget courtesy of cloudinary
   const myWidget = window.cloudinary.createUploadWidget(
     {
       cloudName: "dq3jfvis9",
       uploadPreset: "cyajgdzc",
     },
     (error, result) => {
-      if (!error && result && result.event === "success") {
+      if (!error && result && result.event === "success") { // If video upload is a success, its logged in console
         console.log("Done! Here is the video info: ", result.info);
-        setURL(result.info.secure_url);
+        // When upload is complete, cloudinary gives url for video
+        setURL(result.info.secure_url); // Set URL state for GraphQL database, adds url to database
       }
     }
   );
-
+  // When upload button is clicked, myWidget is called to open
   const uploadClick = () => {
     myWidget.open();
   };
+  // Submit form for title & video URL
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       addVideo({
         variables: {
-          title: title,
-          cloudURL: URL,
-          videoAuthor: Auth.getProfile().data.name,
+          title: title, // title fromm input field
+          cloudURL: URL, // URL from cloudinary upload
+          videoAuthor: Auth.getProfile().data.name, // author from logged in user
         },
       });
-      setTitle("");
-      window.location.assign('/');
+      setTitle(""); // Input field goes back to blank on submit
+      window.location.assign('/'); // On submit, user is taken back to the home page
     } catch (err) {
-      console.error(err);
+      console.error(err); // If there is an error its logged in the console
     }
   };
+
   return (
     <Container className="upload-container justify-content-md-center">
       <Row className="justify-content-md-center upload-padding-top">
@@ -80,9 +83,7 @@ function CloudinaryUploadWidget() {
             Submit
           </button>
         </Row>
-
       </Form>
-
     </Container>
   );
 }
