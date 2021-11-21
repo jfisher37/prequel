@@ -203,3 +203,20 @@ nav {
 }
 
 /*-----Video Page Link Hover-----*/
+
+/*-----Profile Page-----*/
+
+.delete-trash {
+  color: white;
+  font-size: 25px;
+}
+
+.delete-trash:hover {
+  color: var(--gold);
+}
+
+.roboto-font2 {
+  color: white;
+  background-color: var(--LdustBlue);
+  font-family: "Limelight", cursive;
+}

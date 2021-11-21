@@ -40,6 +40,7 @@ const resolvers = {
 
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
+      // console.log(context.body)
       if (context.user) {
         return await User.findOne({ _id: context.user._id });
       }
@@ -58,8 +59,8 @@ const resolvers = {
       return video;
     },
 
-    addUser: async (parent, { name, email, password }) => {
-      const user = await User.create({ name, email, password });
+    addUser: async (parent, { name, email, password, level }) => {
+      const user = await User.create({ name, email, password, level });
       const token = await signToken(user);
       console.log(token);
       return { user, token };
@@ -80,6 +81,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+      console.log(user);
       return { token, user };
     },
 

@@ -20,7 +20,7 @@ const VideoList = ({ videos }) => {
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
 
   if (!videos.length) {
-    return <h3>No Videos Yet!</h3>;
+    return <h3 className="roboto-font2">No Videos Yet!</h3>;
   }
   console.log(videos);
 

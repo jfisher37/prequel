@@ -49,6 +49,7 @@ export const QUERY_USERS = gql`
       _id
       name
       email
+      level
     }
   }
 `;
@@ -58,6 +59,7 @@ export const QUERY_SINGLE_USER = gql`
     user(_id: $id) {
       name
       email
+      level
     }
   }
 `;
@@ -85,6 +87,7 @@ export const QUERY_ME = gql`
     me {
       _id
       name
+      level
     }
   }
 `;
