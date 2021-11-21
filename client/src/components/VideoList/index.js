@@ -20,7 +20,7 @@ const VideoList = ({ videos }) => {
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
 
   if (!videos.length) {
-    return <h3>No Videos Yet!</h3>;
+    return <h3 className="roboto-font2">No Videos Yet!</h3>;
   }
   console.log(videos);
 
@@ -52,13 +52,14 @@ const VideoList = ({ videos }) => {
           <Card className="text-center my-3" key={video._id}>
             <Card.Header as="h2" className="video-title">{video.title}</Card.Header>
             <Card.Body className="video-body">
-              <Card.Title className="roboto-font">{video.publishDate}</Card.Title>
-              <div className="roboto-font">Posted by: {video.videoAuthor}</div>
+              <Card.Title className="roboto-font"><i class="fas fa-calendar-alt"></i>  {video.publishDate}</Card.Title>
+
               <Link to={`/videos/${video._id}`}>
                 <video style={{ width: 660, height: "auto" }} onClick={updateMetrics(video._id, video.views)}>
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
               </Link>
+              <div className="roboto-font"><i class="fas fa-user"></i>  {video.videoAuthor}</div>
 
             </Card.Body >
           </Card >

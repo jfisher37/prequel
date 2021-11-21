@@ -22,24 +22,24 @@ const VideoCrud = () => {
 
   const video = data?.video || {};
 
-    if (loading) {
-        return <div>Loading...</div>;
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  async function deleteFunction(videoId) {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
     }
 
-    async function deleteFunction(videoId) {
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-        if (!token) {
-            return false;
-        }
-
-        try {
-            const {data} = await deleteVideo({
-                variables : {videoId}
-            })
-        } catch (err) {
-            console.log(err)
-        }
+    try {
+      const { data } = await deleteVideo({
+        variables: { videoId }
+      })
+    } catch (err) {
+      console.log(err)
+    }
 
     if (!token) {
       return false;
@@ -59,20 +59,20 @@ const VideoCrud = () => {
           {video.title}
         </Card.Header>
         <Card.Body className="video-body">
-          <Card.Title className="roboto-font">{video.publishDate}</Card.Title>
+          <Card.Title className="roboto-font"> <i class="fas fa-calendar-alt"></i> {video.publishDate}</Card.Title>
           <video style={{ width: 660, height: "auto" }} controls>
             <source src={video.cloudURL} type="video/mp4" />
           </video>
-          <h2>Are you sure you want to delete your video? This action cannot be undone</h2>
+          <h2 className="roboto-font">Are you sure you want to delete your video? This action cannot be undone</h2>
           <div>
-            <Button
+            <button
               className="mb-3 button6"
-              variant="primary"
+
               type="submit"
               onClick={deleteClick}
             >
               Delete
-            </Button>
+            </button>
           </div>
         </Card.Body>
       </Card>
