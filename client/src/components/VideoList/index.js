@@ -36,7 +36,7 @@ const VideoList = ({ videos }) => {
             <Card.Body className="video-body">
               <Card.Title className="roboto-font"><i className="fas fa-calendar-alt"></i>  {video.publishDate}</Card.Title>
               <Link to={`/videos/${video._id}`}>
-                <video playsinline style={{ width: 660, height: "auto" }} onClick={updateMetrics(video._id, video.views)}>
+                <video playsInline style={{ width: 660, height: "auto" }} onClick={updateMetrics(video._id, video.views)}>
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
               </Link>

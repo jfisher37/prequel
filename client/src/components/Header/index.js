@@ -26,9 +26,9 @@ const Header = () => {
           {Auth.loggedIn() ? (
             <>
               {level === 1 || level === 3 ? (<Link className="nav-item nav-link" to="/upload"> Upload</Link>) : ("")}
-              <Link className="nav-item nav-link" to="/me">
+              {level === 1 || level === 3 ? (<Link className="nav-item nav-link" to="/me">
                 View My Profile
-              </Link>
+              </Link>) : ("")}
               <Link className="nav-item nav-link" onClick={logout}>
                 Logout
               </Link>
