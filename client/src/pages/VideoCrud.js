@@ -49,7 +49,7 @@ const VideoCrud = () => {
           {video.title}
         </Card.Header>
         <Card.Body className="video-body">
-          <Card.Title className="roboto-font"> <i class="fas fa-calendar-alt"></i> {video.publishDate}</Card.Title>
+          <Card.Title className="roboto-font"> <i className="fas fa-calendar-alt"></i> {video.publishDate}</Card.Title>
           <video style={{ width: 660, height: "auto" }} controls>
             <source src={video.cloudURL} type="video/mp4" />
           </video>

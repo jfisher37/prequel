@@ -29,16 +29,16 @@ const Profile = () => {
             </Card.Header>
             <Card.Body className="video-body">
               <Card.Title className="roboto-font">
-                <i class="fas fa-calendar-alt"></i> {video.publishDate}
+                <i className="fas fa-calendar-alt"></i> {video.publishDate}
               </Card.Title>
               <Link to={`/videos/${video._id}`}>
                 <video style={{ width: 660, height: "auto" }}>
                   <source src={video.cloudURL} type="video/mp4" />
                 </video>
               </Link>
-              <div className="roboto-font"><i class="fas fa-user"></i>  {Auth.getProfile().data.name}</div>
+              <div className="roboto-font"><i className="fas fa-user"></i>  {Auth.getProfile().data.name}</div>
               <div>
-                <Link className="delete-trash" to={`/videosCrud/${video._id}`}><i class="fas fa-trash"></i></Link>
+                <Link className="delete-trash" to={`/videosCrud/${video._id}`}><i className="fas fa-trash"></i></Link>
               </div>
             </Card.Body>
           </Card>
