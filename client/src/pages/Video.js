@@ -101,7 +101,7 @@ const SingleVideo = () => {
               </video>
               <p className="roboto-font">Likes: {video.likes}</p><p className="roboto-font"> Dislikes: {video.dislikes}</p>
               {level >= 0 ? (<p><button className='button6' disabled={disable} onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
-                <button className='button6' disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>: ("")}
+                <button className='button6' disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>): ("")}
             </Card.Body >
           </Card >
         </Container >
