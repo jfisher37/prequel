@@ -17,6 +17,13 @@
     "name": "balsawood",
     "email": "test@test.test",
     "password": "password03",
+    "level": 1
+  },
+
+  {
+    "name": "inpro",
+    "email": "test8@test.test",
+    "password": "password03",
     "level": 2
   },
 

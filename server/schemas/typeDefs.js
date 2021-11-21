@@ -18,6 +18,8 @@ const typeDefs = gql`
     views: Int
     publishDate: String
     videoAuthor: String!
+    likedBy: [String]
+    dislikedBy: [String]
     genres: [Genre]
   }
 
@@ -47,8 +49,8 @@ const typeDefs = gql`
     addUser(name: String!, email: String!, password: String!, level: Int): Auth
     login(email: String!, password: String!): Auth
     videoMetrics(videoId: String, views: Int): Video
-    updateLikes(videoId: String, likes: Int): Video
-    updateDislikes(videoId: String, dislikes: Int): Video
+    updateLikes(videoId: String, user: String): Video
+    updateDislikes(videoId: String, user: String): Video
     removeVideo(videoId: ID!): Video
   }
 `;

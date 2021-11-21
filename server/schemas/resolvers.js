@@ -98,11 +98,13 @@ const resolvers = {
       return video;
     },
 
-    updateLikes: async (parent, {videoId}) => {
+    updateLikes: async (parent, {videoId, user}) => {
+      console.log (videoId, user)
       const video = await Video.findOneAndUpdate(
               { _id: videoId },
               {
-                $inc: { likes: 1 }
+                $inc: { likes: 1 },
+                $push: { likedBy: user },
               },
               {
                 new: true,
