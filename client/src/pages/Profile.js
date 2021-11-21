@@ -19,6 +19,7 @@ const Profile = () => {
 
   return (
     <div>
+      <h1 className="roboto-font video-title">{Auth.getProfile().data.name}'s Videos</h1>
       {videos.map((video) => (
         <Container>
           <Card className="text-center my-3">
@@ -29,7 +30,7 @@ const Profile = () => {
               <Card.Title className="roboto-font">
                 {video.publishDate}
               </Card.Title>
-              <div className="roboto-font">Posted by: {video.videoAuthor}</div>
+              <div className="roboto-font">Posted by: {Auth.getProfile().data.name}</div>
               <Link to={`/videos/${video._id}`}>
                 <video style={{ width: 660, height: "auto" }}>
                   <source src={video.cloudURL} type="video/mp4" />
