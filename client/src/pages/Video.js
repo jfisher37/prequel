@@ -17,7 +17,6 @@ const SingleVideo = () => {
   if (Auth.getProfile()) {
     level = Auth.getProfile().data.level;
     userId = Auth.getProfile().data._id;
-    console.log(userId);
   };
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
   const [updateLikes, { err }] = useMutation(UPDATE_LIKES);
@@ -26,7 +25,7 @@ const SingleVideo = () => {
     variables: { videoId: videoId },
   });
 
-  const [disable, setDisable] = useState(false);
+  let disable = false;
 
 
   if (loading) {
@@ -35,6 +34,9 @@ const SingleVideo = () => {
     const video = data?.video || {};
 
 
+    if (video.likedBy.includes(userId) || video.dislikedBy.includes(userId)) {
+      disable = true;
+    }
 
     let viewsTag = "";
     if (level > 0) {
@@ -69,8 +71,8 @@ const SingleVideo = () => {
     }
 
     const clickLike = () => {
-      isLiked()
-      setDisable(true)
+      isLiked();
+      disable = true;
     }
 
     const isDisliked = async () => {
@@ -78,6 +80,7 @@ const SingleVideo = () => {
         await updateDislikes({
           variables: {
             videoId: videoId,
+            user: userId,
           }
         });
       } catch (err) {
@@ -87,7 +90,7 @@ const SingleVideo = () => {
 
     const clickDislike = () => {
       isDisliked()
-      setDisable(true)
+      disable = true;
     }
 
     updateMetrics();

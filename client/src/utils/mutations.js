@@ -58,8 +58,8 @@ mutation updateLikes($videoId: String, $user: String) {
 `;
 
 export const UPDATE_DISLIKES = gql`
-  mutation updateDislikes($videoId: String,) {
-    updateDislikes(videoId: $videoId,) {
+  mutation updateDislikes($videoId: String, $user: String) {
+    updateDislikes(videoId: $videoId, user: $user) {
       _id
       title
       cloudURL
@@ -67,6 +67,8 @@ export const UPDATE_DISLIKES = gql`
       dislikes
       views
       publishDate
+      likedBy
+      dislikedBy
     }
   }
 `;
