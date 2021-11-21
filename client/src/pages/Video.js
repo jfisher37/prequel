@@ -96,8 +96,8 @@ const SingleVideo = () => {
                 <source src={video.cloudURL} type="video/mp4" />
               </video>
               <p className="roboto-font">Likes: {video.likes}</p><p className="roboto-font"> Dislikes: {video.dislikes}</p>
-              {level >= 0 ? (<p><button className='button6' disabled={disable} onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
-                <button className='button6' disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>) : ("")}
+              {level >= 0 ? (<p><button className='button6' disabled={disable} onClick={clickLike}><i className="fas fa-thumbs-up"></i></button>
+                <button className='button6' disabled={disable} onClick={clickDislike}><i className="fas fa-thumbs-down"></i></button></p>) : ("")}
             </Card.Body >
           </Card >
         </Container >
