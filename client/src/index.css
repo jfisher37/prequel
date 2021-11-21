@@ -160,6 +160,11 @@ nav {
   color: var(--LdustBlue);
 }
 
+.navbar-light .navbar-toggler {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
 /* -----Upload Page----- */
 .upload-container {
   margin-top: 15px;
