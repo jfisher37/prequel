@@ -9,8 +9,6 @@ import Auth from '../../utils/auth';
 import { QUERY_SINGLE_VIDEO } from "../../utils/queries";
 
 const Header = () => {
-  const { loading, data } = useQuery(QUERY_SINGLE_VIDEO);
-  console.log(data);
 
   const logout = (event) => {
     event.preventDefault();
