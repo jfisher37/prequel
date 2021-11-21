@@ -33,6 +33,19 @@ const videoSchema = new Schema({
     required: true,
     trim: true,
   },
+
+  likedBy: [
+    {
+      type: String
+    },
+  ],
+
+  dislikedBy: [
+    {
+      type: String
+    },
+  ],
+
   genres: [
     {
       type: Schema.Types.ObjectId,

@@ -42,22 +42,24 @@ export const VIDEO_METRICS = gql`
 `;
 
 export const UPDATE_LIKES = gql`
-  mutation updateLikes($videoId: String,) {
-    updateLikes(videoId: $videoId,) {
-      _id
-      title
-      cloudURL
-      likes
-      dislikes
-      views
-      publishDate
-    }
+mutation updateLikes($videoId: String, $user: String) {
+  updateLikes(videoId: $videoId, user: $user) {
+    _id
+    title
+    cloudURL
+    likes
+    dislikes
+    views
+    publishDate
+    likedBy
+    dislikedBy
   }
+}
 `;
 
 export const UPDATE_DISLIKES = gql`
-  mutation updateDislikes($videoId: String,) {
-    updateDislikes(videoId: $videoId,) {
+  mutation updateDislikes($videoId: String, $user: String) {
+    updateDislikes(videoId: $videoId, user: $user) {
       _id
       title
       cloudURL
@@ -65,6 +67,8 @@ export const UPDATE_DISLIKES = gql`
       dislikes
       views
       publishDate
+      likedBy
+      dislikedBy
     }
   }
 `;
@@ -84,3 +88,7 @@ export const REMOVE_VIDEO = gql`
 `
 
 export default ADD_VIDEO;
+
+
+
+

@@ -9,7 +9,7 @@ module.exports = {
     
     let token = req.body.token || req.query.token || req.headers.authorization;
 
-    console.log(req.headers)
+   
 
     // We split the token string into an array and return actual token
     if (req.headers.authorization) {
@@ -25,7 +25,6 @@ module.exports = {
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
-      console.log(data);
     } catch {
       console.log('Invalid token');
     }

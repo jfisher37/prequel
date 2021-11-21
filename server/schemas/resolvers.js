@@ -93,30 +93,32 @@ const resolvers = {
     },
 
     // Mutation to update likes
-    updateLikes: async (parent, { videoId }) => {
+    updateLikes: async (parent, {videoId, user}) => {
       const video = await Video.findOneAndUpdate(
-        { _id: videoId },
-        {
-          $inc: { likes: 1 }
-        },
-        {
-          new: true,
-        }
-      );
+              { _id: videoId },
+              {
+                $inc: { likes: 1 },
+                $push: { likedBy: user },
+              },
+              {
+                new: true,
+              }
+            );
       return video;
     },
 
-    // Mutation to update dislikes
-    updateDislikes: async (parent, { videoId }) => {
+    updateDislikes: async (parent, {videoId, user}) => {
       const video = await Video.findOneAndUpdate(
-        { _id: videoId },
-        {
-          $inc: { dislikes: 1 }
-        },
-        {
-          new: true,
-        }
-      );
+              { _id: videoId },
+              {
+                $inc: { dislikes: 1 },
+                $push: { dislikedBy: user },
+              },
+              {
+                new: true,
+              }
+            );
+    
       return video;
     },
 

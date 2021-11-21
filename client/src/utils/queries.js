@@ -25,6 +25,8 @@ export const QUERY_SINGLE_VIDEO = gql`
       dislikes
       views
       publishDate
+      likedBy
+      dislikedBy
     }
   }
 `;

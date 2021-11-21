@@ -12,8 +12,10 @@ const SingleVideo = () => {
   const { videoId } = useParams();
   // if user is not logged in, level is -1 which restricts certain privileges 
   let level = -1;
+  let userId = "";
   if (Auth.getProfile()) {
-    level = Auth.getProfile().data.level
+    level = Auth.getProfile().data.level;
+    userId = Auth.getProfile().data._id;
   };
   const [videoMetrics, { error }] = useMutation(VIDEO_METRICS);
   const [updateLikes, { err }] = useMutation(UPDATE_LIKES);
@@ -23,12 +25,17 @@ const SingleVideo = () => {
     variables: { videoId: videoId },
   });
 
-  const [disable, setDisable] = useState(false);
+  let disable = false;
 
   if (loading) {
     return <div>Loading...</div>;
   } else {
     const video = data?.video || {};
+
+    if (video.likedBy.includes(userId) || video.dislikedBy.includes(userId)) {
+      disable = true;
+    }
+
     let viewsTag = "";
     if (level > 0) {
       viewsTag = `Views: ${video.views}`
@@ -53,6 +60,7 @@ const SingleVideo = () => {
         await updateLikes({
           variables: {
             videoId: videoId,
+            user: userId,
           },
         });
       } catch (err) {
@@ -61,8 +69,8 @@ const SingleVideo = () => {
     }
     // Calls to increase likes on click of like button
     const clickLike = () => {
-      isLiked()
-      setDisable(true)
+      isLiked();
+      disable = true;
     }
     // Dislike button functionality 
     const isDisliked = async () => {
@@ -70,6 +78,7 @@ const SingleVideo = () => {
         await updateDislikes({
           variables: {
             videoId: videoId,
+            user: userId,
           }
         });
       } catch (err) {
@@ -79,7 +88,7 @@ const SingleVideo = () => {
     // Calls to increase dislikes on click of dislike button
     const clickDislike = () => {
       isDisliked()
-      setDisable(true)
+      disable = true;
     }
     // updates views on page reload
     updateMetrics();
@@ -96,8 +105,12 @@ const SingleVideo = () => {
                 <source src={video.cloudURL} type="video/mp4" />
               </video>
               <p className="roboto-font">Likes: {video.likes}</p><p className="roboto-font"> Dislikes: {video.dislikes}</p>
+
               {level >= 0 ? (<p><button className='button6' disabled={disable} onClick={clickLike}><i className="fas fa-thumbs-up"></i></button>
-                <button className='button6' disabled={disable} onClick={clickDislike}><i className="fas fa-thumbs-down"></i></button></p>) : ("")}
+
+                <button className='button6' disabled={disable} onClick={clickDislike}><i className="fas fa-thumbs-down"></i></button></p>): ("")}
+
+
             </Card.Body >
           </Card >
         </Container >
