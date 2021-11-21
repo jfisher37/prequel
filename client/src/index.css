@@ -179,22 +179,44 @@ nav {
 
 /* -----Video Card Stylings-----*/
 
-.video-title {
+.card-header {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
   background-color: var(--navyBlue);
   color: var(--gold);
 }
 
-.video-body {
-  background-color: var(--silver);
+.card-body {
+  background-color: var(--LdustBlue);
+  color: white;
+
 }
 
 .roboto-font {
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
+  font-size: 1rem;
+}
+
+.card {
+  border: none;
 }
 
 /*-----Video Page Link Hover-----*/
 
+/*-----Profile Page-----*/
 
+.delete-trash {
+  color: white;
+  font-size: 25px;
+}
+
+.delete-trash:hover {
+  color: var(--gold);
+}
+
+.roboto-font2 {
+  color: white;
+  background-color: var(--LdustBlue);
+  font-family: "Limelight", cursive;
+}
