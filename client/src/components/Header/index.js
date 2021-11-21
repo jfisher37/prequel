@@ -2,10 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import { useQuery } from '@apollo/client';
 
 import Auth from '../../utils/auth';
 
+import { QUERY_SINGLE_VIDEO } from "../../utils/queries";
+
 const Header = () => {
+  const { loading, data } = useQuery(QUERY_SINGLE_VIDEO);
+  console.log(data);
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();

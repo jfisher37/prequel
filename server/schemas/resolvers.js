@@ -58,8 +58,8 @@ const resolvers = {
       return video;
     },
 
-    addUser: async (parent, { name, email, password }) => {
-      const user = await User.create({ name, email, password });
+    addUser: async (parent, { name, email, password, level }) => {
+      const user = await User.create({ name, email, password, level });
       const token = await signToken(user);
       console.log(token);
       return { user, token };
