@@ -94,14 +94,14 @@ const SingleVideo = () => {
           <Card className="text-center my-3">
             <Card.Header as="h2">{video.title}</Card.Header>
             <Card.Body>
-              <Card.Title className="roboto-font"><i class="fas fa-calendar-alt"></i>  {video.publishDate}</Card.Title>
+              <Card.Title className="roboto-font"><i class="fas fa-calendar-alt"></i> {video.publishDate}</Card.Title>
               <Card.Title className="roboto-font">{viewsTag}</Card.Title>
               <video style={{ width: 660, height: "auto" }} controls>
                 <source src={video.cloudURL} type="video/mp4" />
               </video>
               <p className="roboto-font">Likes: {video.likes}</p><p className="roboto-font"> Dislikes: {video.dislikes}</p>
-              <p><button className='button6' disabled={disable} onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
-                <button className='button6' disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>
+              {level >= 0 ? (<p><button className='button6' disabled={disable} onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
+                <button className='button6' disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>: ("")}
             </Card.Body >
           </Card >
         </Container >
