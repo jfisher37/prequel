@@ -23,12 +23,8 @@ const SingleVideo = () => {
   } else {
     const video = data?.video || {};
 
-
-
     const updateMetrics = () => {
-
       const newView = (video.views + 1);
-
       try {
         videoMetrics({
           variables: {
@@ -42,7 +38,6 @@ const SingleVideo = () => {
     };
 
     const isLiked = async () => {
-
       try {
         await updateLikes({
           variables: {
@@ -61,7 +56,6 @@ const SingleVideo = () => {
 
 
     const isDisliked = async () => {
-
       try {
         await updateDislikes({
           variables: {
@@ -86,14 +80,14 @@ const SingleVideo = () => {
           <Card className="text-center my-3">
             <Card.Header as="h2">{video.title}</Card.Header>
             <Card.Body>
-              <Card.Title>{video.publishDate}</Card.Title>
-              <Card.Title>Views: {video.views}</Card.Title>
+              <Card.Title className="roboto-font"><i class="fas fa-calendar-alt"></i>  {video.publishDate}</Card.Title>
+              <Card.Title className="roboto-font">Views: {video.views}</Card.Title>
               <video style={{ width: 660, height: "auto" }} controls>
                 <source src={video.cloudURL} type="video/mp4" />
               </video>
-              <p>Likes: {video.likes} Dislikes: {video.dislikes}</p>
-              <p><button disabled={disable} onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
-                <button disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>
+              <p className="roboto-font">Likes: {video.likes}</p><p className="roboto-font"> Dislikes: {video.dislikes}</p>
+              <p><button className='button6' disabled={disable} onClick={clickLike}><i class="fas fa-thumbs-up"></i></button>
+                <button className='button6' disabled={disable} onClick={clickDislike}><i class="fas fa-thumbs-down"></i></button></p>
             </Card.Body>
           </Card>
         </Container>
