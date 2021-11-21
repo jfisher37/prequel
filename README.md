@@ -43,8 +43,8 @@ Navigate to the Heroku link provided above to get to the deployed app. Once ther
 
 When visiting the site, you can create your own account or use a dummy account provided here that has a few uploaded videos already, just to demo the functionality of the site:
 
-- Email:
-- Password:
+- Email: test@test.test
+- Password: password03
 
 ## License
 
