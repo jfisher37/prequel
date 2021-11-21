@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
-
 import { QUERY_SINGLE_VIDEO } from "../utils/queries";
 import { VIDEO_METRICS, UPDATE_LIKES, UPDATE_DISLIKES } from "../utils/mutations";
-
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 
@@ -17,20 +15,14 @@ const SingleVideo = () => {
   const { loading, data } = useQuery(QUERY_SINGLE_VIDEO, {
     variables: { videoId: videoId },
   });
-  console.log(data);
-
 
   if (loading) {
     return <div>Loading...</div>;
   } else {
     const video = data?.video || {};
 
-
-
     const updateMetrics = () => {
-
       const newView = (video.views + 1);
-
       try {
         videoMetrics({
           variables: {
@@ -41,11 +33,10 @@ const SingleVideo = () => {
       } catch (err) {
         console.log(err);
       }
-
     };
 
     const isLiked = () => {
-     const newLikes = (video.likes + 1)
+      const newLikes = (video.likes + 1)
       updateLikes({
         variables: {
           videoId: videoId,
@@ -90,7 +81,7 @@ const SingleVideo = () => {
 
 export default SingleVideo;
 
-// const [videoMetrics, { error }] = useMutation(VIDEO_METRICS, {
+// const [videoMetrics, { error }] = useMutation(UPDATE_LIKES, {
 //   update(cache, { data: { videoMetrics } }) {
 //     try {
 //       const { banana } = cache.readQuery({ query: QUERY_SINGLE_VIDEO });
