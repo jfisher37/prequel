@@ -14,7 +14,7 @@
 
 ## Description
 
-This application is designed to be a video upload and streaming service specifically for independent film/TV show creators to upload their work and for industry professionals to find new projects to fund. Unaffiliated viewers can view and provide likes/dislikes to videos posted, providing industry professionals with a barometer of public interest in a work as well. The overall goal of the project is to get more industry eyes on up-and-coming independent creators.
+This application is a video upload and streaming service specifically for independent film/TV show creators to upload their work and for industry professionals to find new projects to fund. Unaffiliated viewers can view and provide likes/dislikes to videos posted, providing industry professionals with a barometer of public interest in a work as well. The overall goal of the project is to get more industry eyes on up-and-coming independent creators.
 
 It was created using a MERN-stack setup:
 
@@ -56,7 +56,7 @@ If there any questions regarding this project, our group, consisting of Aidan Ri
 
 Our GitHub profiles and email addresses are as follows:
 
+- [Joey Fisher](https://github.com/jfisher37) --- joseph.eric.fisher@gmail.com
 - [Aidan Rich](https://github.com/aidanrich) --- rich.aidan@gmail.com
 - [Nicole Pingar](https://github.com/nicolepingar) --- nicolepingar@gmail.com
-- [Joey Fisher](https://github.com/jfisher37) --- joseph.eric.fisher@gmail.com
 - [Phil Bohn](https://github.com/lamperouge1218) --- philbohn1791@gmail.com
